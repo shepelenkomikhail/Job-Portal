@@ -1,0 +1,145 @@
+[
+  {
+    "company": "TechWave Inc.",
+    "companyLogo": "./ericson.jpg",
+    "title": "Software Engineer",
+    "industry": "IT",
+    "jobType": "Full Time",
+    "remote": "Hybrid",
+    "location": "San Francisco, CA",
+    "benefits": [
+      "Medical insurance",
+      "Dental insurance",
+      "Pension plan",
+      "Remote work"
+    ]
+  },
+  {
+    "company": "GreenFuture Solutions",
+    "companyLogo": "./ericson.jpg",
+    "title": "Environmental Consultant",
+    "industry": "Consulting",
+    "jobType": "Part Time",
+    "remote": "On Site",
+    "location": "Denver, CO",
+    "benefits": [
+      "Maternity leave",
+      "Student loan assistance",
+      "Pension plan"
+    ]
+  },
+  {
+    "company": "Finity Bank",
+    "companyLogo": "./ericson.jpg",
+    "title": "Financial Analyst",
+    "industry": "Finance",
+    "jobType": "Full Time",
+    "remote": "Remote",
+    "location": "New York, NY",
+    "benefits": [
+      "Medical insurance",
+      "Flexible hours",
+      "Dental insurance"
+    ]
+  },
+  {
+    "company": "HealthFirst",
+    "companyLogo": "./ericson.jpg",
+    "title": "Healthcare Administrator",
+    "industry": "Medical",
+    "jobType": "Full Time",
+    "remote": "On Site",
+    "location": "Chicago, IL",
+    "benefits": [
+      "Medical insurance",
+      "Pension plan",
+      "Maternity leave",
+      "Childcare support"
+    ]
+  },
+  {
+    "company": "Innovate Media",
+    "companyLogo": "./ericson.jpg",
+    "title": "Content Strategist",
+    "industry": "Media",
+    "jobType": "Contract",
+    "remote": "Remote",
+    "location": "Los Angeles, CA",
+    "benefits": [
+      "Flexible hours",
+      "Health insurance",
+      "Gym membership discount"
+    ]
+  },
+  {
+    "company": "UrbanDesign Ltd.",
+    "companyLogo": "./ericson.jpg",
+    "title": "Architect",
+    "industry": "Construction",
+    "jobType": "Full Time",
+    "remote": "Hybrid",
+    "location": "Austin, TX",
+    "benefits": [
+      "Medical insurance",
+      "Dental insurance",
+      "Professional development"
+    ]
+  },
+  {
+    "company": "Skyline Tech",
+    "companyLogo": "./ericson.jpg",
+    "title": "Product Manager",
+    "industry": "Technology",
+    "jobType": "Full Time",
+    "remote": "Hybrid",
+    "location": "Seattle, WA",
+    "benefits": [
+      "Medical insurance",
+      "Stock options",
+      "Gym membership",
+      "Remote work flexibility"
+    ]
+  },
+  {
+    "company": "LawPro Associates",
+    "companyLogo": "./ericson.jpg",
+    "title": "Paralegal",
+    "industry": "Law",
+    "jobType": "Full Time",
+    "remote": "On Site",
+    "location": "Washington, D.C.",
+    "benefits": [
+      "Medical insurance",
+      "Pension plan",
+      "Paid time off"
+    ]
+  },
+  {
+    "company": "BrightFuture Ed",
+    "companyLogo": "./ericson.jpg",
+    "title": "Education Program Coordinator",
+    "industry": "Education",
+    "jobType": "Part Time",
+    "remote": "Remote",
+    "location": "Phoenix, AZ",
+    "benefits": [
+      "Flexible hours",
+      "Health insurance",
+      "Professional development"
+    ]
+  },
+  {
+    "company": "EcoLogistics",
+    "companyLogo": "./ericson.jpg",
+    "title": "Supply Chain Manager",
+    "industry": "Logistics",
+    "jobType": "Full Time",
+    "remote": "Hybrid",
+    "location": "Atlanta, GA",
+    "benefits": [
+      "Medical insurance",
+      "Pension plan",
+      "Gym membership"
+    ]
+  }
+]

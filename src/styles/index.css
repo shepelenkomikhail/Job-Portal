@@ -25,3 +25,12 @@ button, input {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
 }
+
+.blueButton {
+  @apply bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded
+}
+
+.grayButton {
+
+  @apply border border-gray-400 hover:bg-gray-300  text-black font-semibold py-2 px-4 rounded
+}
