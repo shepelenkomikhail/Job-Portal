@@ -1,16 +1,14 @@
+import CheckBox from "../styled_elements/CheckBox.tsx";
+
 export default function RemoteFilter() {
     return (
         <div>
-            <p>Remote</p>
-            <label>
-                <input type="checkbox" /> On Site
-            </label>
-            <label>
-                <input type="checkbox" /> Hybrid
-            </label>
-            <label>
-                <input type="checkbox" /> Remote
-            </label>
+            <h3 className={"mb-2"}>Remote</h3>
+            <div className={"grid grid-cols-3"}>
+                <CheckBox label={"On Site"} />
+                <CheckBox label={"Hybrid"} />
+                <CheckBox label={"Remote"} />
+            </div>
         </div>
     );
 }

@@ -7,17 +7,20 @@ import BenefitsFilter from "../filters/BenefitsFilter.tsx";
 
 export default function Filters() {
     return (
-        <div className="flex flex-col border-r-2 border-gray-400 bg-buttonviolet">
-            <button role="button" className="ml-auto mr-3">
-                <p className="text-right">Clear all filters</p>
+        <div className="flex flex-col border-r border-gray-300 pr-4">
+            <button role="button" className="ml-auto mb-2">
+                <p className="text-right text-placeholder font-semibold">Clear all filters</p>
             </button>
 
-            <LocationFilter />
-            <JobTypeFilter />
-            <CompanyFilter />
-            <RemoteFilter />
-            <IndustryFilter />
-            <BenefitsFilter />
+            <div className={"flex flex-col gap-8"}>
+                <LocationFilter />
+                <JobTypeFilter />
+                <CompanyFilter />
+                <RemoteFilter />
+                <IndustryFilter />
+                <BenefitsFilter />
+            </div>
+
         </div>
     );
 }

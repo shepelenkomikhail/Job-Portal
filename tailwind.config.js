@@ -31,6 +31,7 @@ export default {
                 buttonviolet: '#6e54b5',
                 darkinput: '#3b364c',
                 darkplaceholder: '#6d6b79',
+                placeholder: 'rgb(145,149,157)'
             }
         },
     },
