@@ -16,7 +16,7 @@ export default function CheckBox({label}: { label: string }) {
                     </svg>
                     </span>
             </label>
-            <p className={"font-medium ml-8 absolute"}>{label}</p>
+            <p className={"font-medium ml-8 absolute text-sm"}>{label}</p>
         </div>
     );
 }

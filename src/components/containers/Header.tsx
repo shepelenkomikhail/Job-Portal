@@ -3,7 +3,7 @@ export default function Header(){
         <header className={"mx-12 mt-8"}>
             <div className={"flex justify-between items-center"}>
                 <h1 className={"font-bold text-blue-950"}>Job Portal</h1>
-                <h1 className={"text-4xl text-black"}>We have a job for you!</h1>
+                <h1 className={"hidden md:block text-4xl text-black"}>We have a job for you!</h1>
                 <div className={"flex gap-3"}>
                     <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
                          fill="#000000">

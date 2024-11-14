@@ -1,20 +1,19 @@
 [
   {
+    "id": 1,
     "company": "TechWave Inc.",
     "companyLogo": "./ericson.jpg",
     "title": "Software Engineer",
     "industry": "IT",
     "jobType": "Full Time",
     "remote": "Hybrid",
-    "location": "San Francisco, CA",
-    "benefits": [
-      "Medical insurance",
-      "Dental insurance",
-      "Pension plan",
-      "Remote work"
-    ]
+    "location": "San , CA",
+    "benefits": ["Medical insurance", "Dental insurance", "Pension plan", "Remote work"],
+    "saved": true,
+    "datePosted": "2023-11-01"
   },
   {
+    "id": 2,
     "company": "GreenFuture Solutions",
     "companyLogo": "./ericson.jpg",
     "title": "Environmental Consultant",
@@ -22,13 +21,12 @@
     "jobType": "Part Time",
     "remote": "On Site",
     "location": "Denver, CO",
-    "benefits": [
-      "Maternity leave",
-      "Student loan assistance",
-      "Pension plan"
-    ]
+    "benefits": ["Maternity leave", "Student loan assistance", "Pension plan"],
+    "saved": false,
+    "datePosted": "2023-10-28"
   },
   {
+    "id": 3,
     "company": "Finity Bank",
     "companyLogo": "./ericson.jpg",
     "title": "Financial Analyst",
@@ -36,13 +34,12 @@
     "jobType": "Full Time",
     "remote": "Remote",
     "location": "New York, NY",
-    "benefits": [
-      "Medical insurance",
-      "Flexible hours",
-      "Dental insurance"
-    ]
+    "benefits": ["Medical insurance", "Flexible hours", "Dental insurance"],
+    "saved": false,
+    "datePosted": "2023-11-05"
   },
   {
+    "id": 4,
     "company": "HealthFirst",
     "companyLogo": "./ericson.jpg",
     "title": "Healthcare Administrator",
@@ -50,14 +47,12 @@
     "jobType": "Full Time",
     "remote": "On Site",
     "location": "Chicago, IL",
-    "benefits": [
-      "Medical insurance",
-      "Pension plan",
-      "Maternity leave",
-      "Childcare support"
-    ]
+    "benefits": ["Medical insurance", "Pension plan", "Maternity leave", "Childcare support"],
+    "saved": false,
+    "datePosted": "2023-10-20"
   },
   {
+    "id": 5,
     "company": "Innovate Media",
     "companyLogo": "./ericson.jpg",
     "title": "Content Strategist",
@@ -65,13 +60,12 @@
     "jobType": "Contract",
     "remote": "Remote",
     "location": "Los Angeles, CA",
-    "benefits": [
-      "Flexible hours",
-      "Health insurance",
-      "Gym membership discount"
-    ]
+    "benefits": ["Flexible hours", "Health insurance", "Gym membership discount"],
+    "saved": true,
+    "datePosted": "2023-11-08"
   },
   {
+    "id": 6,
     "company": "UrbanDesign Ltd.",
     "companyLogo": "./ericson.jpg",
     "title": "Architect",
@@ -79,13 +73,12 @@
     "jobType": "Full Time",
     "remote": "Hybrid",
     "location": "Austin, TX",
-    "benefits": [
-      "Medical insurance",
-      "Dental insurance",
-      "Professional development"
-    ]
+    "benefits": ["Medical insurance", "Dental insurance", "Professional development"],
+    "saved": false,
+    "datePosted": "2023-10-15"
   },
   {
+    "id": 7,
     "company": "Skyline Tech",
     "companyLogo": "./ericson.jpg",
     "title": "Product Manager",
@@ -93,14 +86,12 @@
     "jobType": "Full Time",
     "remote": "Hybrid",
     "location": "Seattle, WA",
-    "benefits": [
-      "Medical insurance",
-      "Stock options",
-      "Gym membership",
-      "Remote work flexibility"
-    ]
+    "benefits": ["Medical insurance", "Stock options", "Gym membership", "Remote work flexibility"],
+    "saved": false,
+    "datePosted": "2023-11-10"
   },
   {
+    "id": 8,
     "company": "LawPro Associates",
     "companyLogo": "./ericson.jpg",
     "title": "Paralegal",
@@ -108,13 +99,12 @@
     "jobType": "Full Time",
     "remote": "On Site",
     "location": "Washington, D.C.",
-    "benefits": [
-      "Medical insurance",
-      "Pension plan",
-      "Paid time off"
-    ]
+    "benefits": ["Medical insurance", "Pension plan", "Paid time off"],
+    "saved": false,
+    "datePosted": "2023-09-30"
   },
   {
+    "id": 9,
     "company": "BrightFuture Ed",
     "companyLogo": "./ericson.jpg",
     "title": "Education Program Coordinator",
@@ -122,13 +112,12 @@
     "jobType": "Part Time",
     "remote": "Remote",
     "location": "Phoenix, AZ",
-    "benefits": [
-      "Flexible hours",
-      "Health insurance",
-      "Professional development"
-    ]
+    "benefits": ["Flexible hours", "Health insurance", "Professional development"],
+    "saved": true,
+    "datePosted": "2023-11-12"
   },
   {
+    "id": 10,
     "company": "EcoLogistics",
     "companyLogo": "./ericson.jpg",
     "title": "Supply Chain Manager",
@@ -136,10 +125,138 @@
     "jobType": "Full Time",
     "remote": "Hybrid",
     "location": "Atlanta, GA",
-    "benefits": [
-      "Medical insurance",
-      "Pension plan",
-      "Gym membership"
-    ]
+    "benefits": ["Medical insurance", "Pension plan", "Gym membership"],
+    "saved": false,
+    "datePosted": "2023-10-10"
+  },
+  {
+    "id": 11,
+    "company": "NexGen Energy",
+    "companyLogo": "./ericson.jpg",
+    "title": "Energy Analyst",
+    "industry": "Energy",
+    "jobType": "Full Time",
+    "remote": "On Site",
+    "location": "Houston, TX",
+    "benefits": ["Medical insurance", "Dental insurance", "Pension plan"],
+    "saved": false,
+    "datePosted": "2023-11-03"
+  },
+  {
+    "id": 12,
+    "company": "Agrify Solutions",
+    "companyLogo": "./ericson.jpg",
+    "title": "Agricultural Consultant",
+    "industry": "Agriculture",
+    "jobType": "Contract",
+    "remote": "Remote",
+    "location": "Des Moines, IA",
+    "benefits": ["Flexible hours", "Professional development"],
+    "saved": false,
+    "datePosted": "2023-10-05"
+  },
+  {
+    "id": 13,
+    "company": "AeroTech Innovations",
+    "companyLogo": "./ericson.jpg",
+    "title": "Aerospace Engineer",
+    "industry": "Aerospace",
+    "jobType": "Full Time",
+    "remote": "Hybrid",
+    "location": "Dayton, OH",
+    "benefits": ["Medical insurance", "Stock options", "Flexible hours"],
+    "saved": false,
+    "datePosted": "2023-11-07"
+  },
+  {
+    "id": 14,
+    "company": "EcoMarket",
+    "companyLogo": "./ericson.jpg",
+    "title": "Marketing Specialist",
+    "industry": "Marketing",
+    "jobType": "Part Time",
+    "remote": "Remote",
+    "location": "Portland, OR",
+    "benefits": ["Flexible hours", "Remote work"],
+    "saved": false,
+    "datePosted": "2023-10-27"
+  },
+  {
+    "id": 15,
+    "company": "Global Foods Inc.",
+    "companyLogo": "./ericson.jpg",
+    "title": "Food Scientist",
+    "industry": "Food Production",
+    "jobType": "Full Time",
+    "remote": "On Site",
+    "location": "St. Louis, MO",
+    "benefits": ["Medical insurance", "Pension plan", "Professional development"],
+    "saved": true,
+    "datePosted": "2023-11-06"
+  },
+  {
+    "id": 16,
+    "company": "BrightDesign Studios",
+    "companyLogo": "./ericson.jpg",
+    "title": "Graphic Designer",
+    "industry": "Design",
+    "jobType": "Contract",
+    "remote": "Remote",
+    "location": "Miami, FL",
+    "benefits": ["Flexible hours", "Remote work", "Health insurance"],
+    "saved": false,
+    "datePosted": "2023-10-15"
+  },
+  {
+    "id": 17,
+    "company": "CareFirst",
+    "companyLogo": "./ericson.jpg",
+    "title": "Social Worker",
+    "industry": "Social Services",
+    "jobType": "Full Time",
+    "remote": "On Site",
+    "location": "Boston, MA",
+    "benefits": ["Medical insurance", "Childcare support", "Pension plan"],
+    "saved": false,
+    "datePosted": "2023-11-09"
+  },
+  {
+    "id": 18,
+    "company": "MediTech Solutions",
+    "companyLogo": "./ericson.jpg",
+    "title": "Clinical Data Analyst",
+    "industry": "Healthcare Technology",
+    "jobType": "Full Time",
+    "remote": "Hybrid",
+    "location": "Raleigh, NC",
+    "benefits": ["Medical insurance", "Flexible hours", "Gym membership"],
+    "saved": false,
+    "datePosted": "2023-10-11"
+  },
+  {
+    "id": 19,
+    "company": "AquaTech",
+    "companyLogo": "./ericson.jpg",
+    "title": "Water Resources Manager",
+    "industry": "Environmental",
+    "jobType": "Full Time",
+    "remote": "On Site",
+    "location": "Orlando, FL",
+    "benefits": ["Medical insurance", "Pension plan", "Childcare support"],
+    "saved": true,
+    "datePosted": "2023-11-02"
+  },
+  {
+    "id": 20,
+    "company": "Elite Logistics",
+    "companyLogo": "./ericson.jpg",
+    "title": "Logistics Coordinator",
+    "industry": "Transportation",
+    "jobType": "Full Time",
+    "remote": "Hybrid",
+    "location": "Dallas, TX",
+    "benefits": ["Medical insurance", "Pension plan", "Paid time off"],
+    "saved": false,
+    "datePosted": "2023-11-03"
   }
 ]

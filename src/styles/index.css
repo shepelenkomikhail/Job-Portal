@@ -13,7 +13,7 @@ h1 {
 h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  @apply text-xl xl:text-2xl;
+  @apply text-lg xl:text-xl;
 }
 
 p {

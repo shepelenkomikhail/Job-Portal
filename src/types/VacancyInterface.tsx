@@ -1,4 +1,5 @@
 export interface VacancyInterface {
+    id: number;
     company: string;
     companyLogo: string;
     title: string;
@@ -7,4 +8,6 @@ export interface VacancyInterface {
     remote: string;
     location: string;
     benefits?: string[];
+    datePosted: string;
+    saved: boolean;
 }
