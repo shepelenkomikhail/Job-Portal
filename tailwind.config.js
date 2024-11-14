@@ -32,6 +32,12 @@ export default {
                 darkinput: '#3b364c',
                 darkplaceholder: '#6d6b79',
                 placeholder: 'rgb(145,149,157)'
+            },
+            scale: {
+                101: '1.01',
+                102: '1.02',
+                103: '1.03',
+                104: '1.04',
             }
         },
     },

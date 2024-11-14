@@ -1,9 +1,12 @@
 import Input from "../styled_elements/Input.tsx";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import CheckBox from "../styled_elements/CheckBox.tsx";
+import {atom, useAtom} from "jotai/index";
+
+export const gridVal = atom<boolean>(false);
 
 export default function JobsSearch() {
-    const [grid, setGrid] = useState(true);
+    const [grid, setGrid] = useAtom(gridVal);
 
     useEffect(() => {
         localStorage.setItem("grid", JSON.stringify(grid));
