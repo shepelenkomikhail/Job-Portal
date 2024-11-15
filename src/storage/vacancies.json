@@ -2,7 +2,7 @@
   {
     "id": 1,
     "company": "TechWave Inc.",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Software Engineer",
     "industry": "IT",
     "jobType": "Full Time",
@@ -15,7 +15,7 @@
   {
     "id": 2,
     "company": "GreenFuture Solutions",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Environmental Consultant",
     "industry": "Consulting",
     "jobType": "Part Time",
@@ -28,7 +28,7 @@
   {
     "id": 3,
     "company": "Finity Bank",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Financial Analyst",
     "industry": "Finance",
     "jobType": "Full Time",
@@ -41,7 +41,7 @@
   {
     "id": 4,
     "company": "HealthFirst",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Healthcare Administrator",
     "industry": "Medical",
     "jobType": "Full Time",
@@ -54,7 +54,7 @@
   {
     "id": 5,
     "company": "Innovate Media",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Content Strategist",
     "industry": "Media",
     "jobType": "Contract",
@@ -67,7 +67,7 @@
   {
     "id": 6,
     "company": "UrbanDesign Ltd.",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Architect",
     "industry": "Construction",
     "jobType": "Full Time",
@@ -80,7 +80,7 @@
   {
     "id": 7,
     "company": "Skyline Tech",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Product Manager",
     "industry": "Technology",
     "jobType": "Full Time",
@@ -93,7 +93,7 @@
   {
     "id": 8,
     "company": "LawPro Associates",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Paralegal",
     "industry": "Law",
     "jobType": "Full Time",
@@ -106,7 +106,7 @@
   {
     "id": 9,
     "company": "BrightFuture Ed",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Education Program Coordinator",
     "industry": "Education",
     "jobType": "Part Time",
@@ -119,7 +119,7 @@
   {
     "id": 10,
     "company": "EcoLogistics",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Supply Chain Manager",
     "industry": "Logistics",
     "jobType": "Full Time",
@@ -132,7 +132,7 @@
   {
     "id": 11,
     "company": "NexGen Energy",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Energy Analyst",
     "industry": "Energy",
     "jobType": "Full Time",
@@ -145,7 +145,7 @@
   {
     "id": 12,
     "company": "Agrify Solutions",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Agricultural Consultant",
     "industry": "Agriculture",
     "jobType": "Contract",
@@ -158,7 +158,7 @@
   {
     "id": 13,
     "company": "AeroTech Innovations",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Aerospace Engineer",
     "industry": "Aerospace",
     "jobType": "Full Time",
@@ -171,7 +171,7 @@
   {
     "id": 14,
     "company": "EcoMarket",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Marketing Specialist",
     "industry": "Marketing",
     "jobType": "Part Time",
@@ -184,7 +184,7 @@
   {
     "id": 15,
     "company": "Global Foods Inc.",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Food Scientist",
     "industry": "Food Production",
     "jobType": "Full Time",
@@ -197,7 +197,7 @@
   {
     "id": 16,
     "company": "BrightDesign Studios",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Graphic Designer",
     "industry": "Design",
     "jobType": "Contract",
@@ -210,7 +210,7 @@
   {
     "id": 17,
     "company": "CareFirst",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Social Worker",
     "industry": "Social Services",
     "jobType": "Full Time",
@@ -223,7 +223,7 @@
   {
     "id": 18,
     "company": "MediTech Solutions",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Clinical Data Analyst",
     "industry": "Healthcare Technology",
     "jobType": "Full Time",
@@ -236,7 +236,7 @@
   {
     "id": 19,
     "company": "AquaTech",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Water Resources Manager",
     "industry": "Environmental",
     "jobType": "Full Time",
@@ -249,7 +249,7 @@
   {
     "id": 20,
     "company": "Elite Logistics",
-    "companyLogo": "./ericson.jpg",
+    "companyLogo": "./react.svg",
     "title": "Logistics Coordinator",
     "industry": "Transportation",
     "jobType": "Full Time",
