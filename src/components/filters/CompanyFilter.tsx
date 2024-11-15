@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Input from "../styled_elements/Input.tsx";
 import CheckBox from "../styled_elements/CheckBox.tsx";
 import companiesData from "../../storage/companies.json";
 
-export default function CompanyFilter() {
+export default function CompanyFilter({ onCompanySelect }) {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredCompanies, setFilteredCompanies] = useState(companiesData);
     const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
@@ -42,11 +42,19 @@ export default function CompanyFilter() {
         setSelectedCompanies((prev) => prev.filter((c) => c !== company));
     };
 
+    const handleCompanyChange = (company: string) => {
+        onCompanySelect((prev) => [...prev, company]);
+    };
+
     return (
         <div className="flex flex-col justify-center gap-4">
             <div className={"relative"}>
                 <h3 className="mb-2">Companies</h3>
-                <Input type="text" placeholder="Find companies.." value={searchTerm} onChange={handleSearchChange}
+                <Input
+                    type="text"
+                    placeholder="Find companies.."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
                     svg={
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="40px" fill="#6b7280">
                             <path d="M146.67-120q-27 0-46.84-19.83Q80-159.67 80-186.67v-466.66q0-27 19.83-46.84Q119.67-720 146.67-720H320v-93.33q0-27 19.83-46.84Q359.67-880 386.67-880h186.66q27 0 46.84 19.83Q640-840.33 640-813.33V-720h173.33q27 0 46.84 19.83Q880-680.33 880-653.33v466.66q0 27-19.83 46.84Q840.33-120 813.33-120H146.67Zm0-66.67h666.66v-466.66H146.67v466.66Zm240-533.33h186.66v-93.33H386.67V-720Zm-240 533.33v-466.66 466.66Z"/>
@@ -54,11 +62,11 @@ export default function CompanyFilter() {
                     }
                 />
                 {searchTerm && filteredCompanies.length > 0 && isDropdownVisible && (
-                    <div style={{ maxHeight: "400px" }}
-                        className="absolute bg-white shadow-lg max-h-40 overflow-auto border border-gray-200 mt-2 rounded-md w-full z-10"
-                    >
+                    <div style={{ maxHeight: "400px" }} className="absolute bg-white shadow-lg max-h-40 overflow-auto border border-gray-200 mt-2 rounded-md w-full z-10">
                         {filteredCompanies.map((company, index) => (
-                            <div key={index} className={`p-2 cursor-pointer ${selectedCompanies.includes(company) ? "font-bold text-blue-800" : ""} 
+                            <div
+                                key={index}
+                                className={`p-2 cursor-pointer ${selectedCompanies.includes(company) ? "font-bold text-blue-800" : ""} 
                                 ${company === hoveredCompany ? "bg-gray-100" : ""}`}
                                 onClick={() => handleCompanySelect(company)}
                                 onMouseEnter={() => handleCompanyHover(company)}
@@ -85,24 +93,24 @@ export default function CompanyFilter() {
             <div className="grid grid-cols-2">
                 <div className="flex flex-col">
                     <label>
-                        <CheckBox label="Apple"/>
+                        <CheckBox label="Apple" checked={selectedCompanies.includes("Apple")} onChange={() => handleCompanyChange("Apple")} />
                     </label>
                     <label>
-                        <CheckBox label="Microsoft"/>
+                        <CheckBox label="Microsoft" checked={selectedCompanies.includes("Microsoft")} onChange={() => handleCompanyChange("Microsoft")} />
                     </label>
                     <label>
-                        <CheckBox label="Google"/>
+                        <CheckBox label="Google" checked={selectedCompanies.includes("Google")} onChange={() => handleCompanyChange("Google")} />
                     </label>
                 </div>
                 <div className="flex flex-col">
-                <label>
-                        <CheckBox label="Netflix" />
+                    <label>
+                        <CheckBox label="Netflix" checked={selectedCompanies.includes("Netflix")} onChange={() => handleCompanyChange("Netflix")} />
                     </label>
                     <label>
-                        <CheckBox label="Facebook" />
+                        <CheckBox label="Facebook" checked={selectedCompanies.includes("Facebook")} onChange={() => handleCompanyChange("Facebook")} />
                     </label>
                     <label>
-                        <CheckBox label="Amazon" />
+                        <CheckBox label="Amazon" checked={selectedCompanies.includes("Amazon")} onChange={() => handleCompanyChange("Amazon")} />
                     </label>
                 </div>
             </div>

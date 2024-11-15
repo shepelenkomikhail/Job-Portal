@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Input from "../styled_elements/Input.tsx";
 
-
 const API_KEY = "43bddd270498446c9b44f1cc1acaeb05";
 
-export default function LocationFilter() {
+export default function LocationFilter({ onLocationSelect }) {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [filteredLocations, setFilteredLocations] = useState<any[]>([]);
     const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
@@ -30,7 +29,11 @@ export default function LocationFilter() {
 
     const handleLocationSelect = (location: string) => {
         if (!selectedLocations.includes(location)) {
-            setSelectedLocations(prev => [...prev, location]);
+            setSelectedLocations(prev => {
+                const updatedLocations = [...prev, location];
+                onLocationSelect(updatedLocations); // Pass selected locations to parent
+                return updatedLocations;
+            });
             setIsDropdownVisible(false);
         }
     };
@@ -45,14 +48,22 @@ export default function LocationFilter() {
     };
 
     const handleRemoveLocation = (location: string) => {
-        setSelectedLocations(prev => prev.filter(l => l !== location));
+        setSelectedLocations(prev => {
+            const updatedLocations = prev.filter(l => l !== location);
+            onLocationSelect(updatedLocations); // Update parent with the modified locations
+            return updatedLocations;
+        });
     };
 
     return (
         <div className="flex flex-col justify-center">
             <div className={"relative"}>
                 <h3 className="mb-2">Locations</h3>
-                <Input type="text" placeholder="Add locations..." value={searchTerm} onChange={handleSearchChange}
+                <Input
+                    type="text"
+                    placeholder="Add locations..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
                     svg={
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="40px" fill="#6b7280">
                             <path

@@ -1,10 +1,16 @@
-export default function CheckBox({label}: { label: string }) {
+interface CheckBoxProps {
+    label: string;
+    checked: boolean;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function CheckBox({ label, checked, onChange }: CheckBoxProps) {
     return (
         <div className="inline-flex items-center mr-6">
             <label className="flex items-center cursor-pointer relative">
-                <input type="checkbox"
+                <input type="checkbox" checked={checked} onChange={onChange}
                        className="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded shadow
-                           hover:shadow-md border border-slate-300 checked:bg-indigo-600 checked:border-indigo-600"/>
+                           hover:shadow-md border border-slate-300 checked:bg-blue-600 checked:border-blue-600"/>
                 <span
                     className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20"

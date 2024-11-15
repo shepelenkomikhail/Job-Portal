@@ -11,6 +11,9 @@ export default function JobsSearch() {
     const [search, setSearch] = useState("");
     const [, setSearchTerm] = useAtom(searchTermAtom);
 
+    const [selectedRelevanceOption, setSelectedRelevanceOption] = useState(false);
+    const [selectedDateOption, setSelectedDateOption] = useState(false);
+
     useEffect(() => {
         localStorage.setItem("grid", JSON.stringify(grid));
     }, [grid]);
@@ -57,8 +60,8 @@ export default function JobsSearch() {
             <div className={"ml-14 mt-2 flex"}>
                 <p className={"font-medium mr-4"}>Sort by :</p>
                     <div className={"grid grid-cols-2 gap-4 w-1/3"}>
-                        <CheckBox label={"Relevance"}/>
-                        <CheckBox label={"Date"}/>
+                        <CheckBox label={"Relevance"} checked={selectedRelevanceOption} onChange={() => setSelectedRelevanceOption(!selectedRelevanceOption) }/>
+                        <CheckBox label={"Date"} checked={selectedDateOption} onChange={() => setSelectedDateOption(!selectedDateOption) }/>
                     </div>
             </div>
         </div>
