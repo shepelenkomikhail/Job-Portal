@@ -73,7 +73,7 @@ export default function JobsList({
         } else if (selectedDateOption) {
             return new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime();
         }
-        return filteredVacancies;
+        return 0;
     });
 
     const indexOfLastPost = currentPage * postsPerPage;
@@ -92,7 +92,7 @@ export default function JobsList({
         <div className="flex flex-col items-center justify-center mt-8" role="region" aria-labelledby="jobs-list">
             <div className={`gap-8 m-6 lg:mb-12 w-10/12 flex ${grid ? "flex-wrap flex-row items-center justify-center xl:gap-12 w-full" : "flex-col"}`} role="list">
                 {currentVacancies.map((vacancy, index) => (
-                    <JobCard key={index} vacancy={vacancy} grid={grid} role="listitem"/>
+                    <JobCard key={index} vacancy={vacancy} grid={grid} />
                 ))}
             </div>
             <Pagination

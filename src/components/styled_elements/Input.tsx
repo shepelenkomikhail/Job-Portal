@@ -3,16 +3,18 @@ import {ChangeEvent, ReactNode} from "react";
 interface InputProps {
     type: string;
     placeholder: string;
+    id?: string;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
     svg?: ReactNode;
     width?: string;
     value?: string;
 }
 
-export default function Input({ type, placeholder, onChange, svg, width, value }: InputProps) {
+export default function Input({ type, placeholder, onChange, svg, width, value, id }: InputProps) {
     return (
         <div className="relative flex items-center" style={{ width: `${width}` }} role="presentation">
             <input
+                id={id}
                 type={type}
                 placeholder={placeholder}
                 onChange={onChange}

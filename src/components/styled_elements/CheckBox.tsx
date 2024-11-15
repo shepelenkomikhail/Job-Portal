@@ -1,14 +1,16 @@
 interface CheckBoxProps {
     label: string;
     checked: boolean;
+    id?: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function CheckBox({ label, checked, onChange }: CheckBoxProps) {
+export default function CheckBox({ label, checked, onChange, id }: CheckBoxProps) {
     return (
         <div className="inline-flex items-center mr-6" role="presentation">
             <label className="flex items-center cursor-pointer relative" role="label" aria-label={label}>
                 <input
+                    id={id}
                     type="checkbox"
                     checked={checked}
                     onChange={onChange}

@@ -75,7 +75,7 @@ export default function JobCard({vacancy, grid}: {vacancy: VacancyInterface, gri
                             <div className={"flex flex-row gap-4"}>
                                 <img
                                     src={vacancy.companyLogo}
-                                    className={"w-20 h-20 rounded-xl mb-2"}
+                                    className={"w-16 h-16 md:w-20 md:h-20 rounded-xl mb-2"}
                                     alt={`Logo of ${vacancy.company}`}
                                     role="img"
                                     aria-label={`${vacancy.company} logo`}
