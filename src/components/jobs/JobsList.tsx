@@ -2,19 +2,35 @@ import vacancies from '../../storage/vacancies.json';
 import { VacancyInterface } from '../../types/VacancyInterface';
 import JobCard from "./JobCard";
 import Pagination from "./Pagination";
-import {useState } from "react";
+import {useEffect, useState} from "react";
 import {useAtom} from "jotai/index";
-import {gridVal} from "./JobsSearch";
+import {gridVal, searchTermAtom} from "./JobsSearch";
 
 export default function JobsList() {
     const [grid] = useAtom(gridVal);
-
+    const [searchTerm] = useAtom(searchTermAtom);
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage: 8|5 = grid ? 8 : 5;
+    const postsPerPage: 8 | 5 = grid ? 8 : 5;
+
+    const filteredVacancies = vacancies.filter((vacancy: VacancyInterface) => {
+        const lowerSearch = searchTerm.toLowerCase();
+        return (
+            vacancy.title.toLowerCase().includes(lowerSearch) ||
+            vacancy.company.toLowerCase().includes(lowerSearch)
+        );
+    });
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentVacancies = vacancies.slice(indexOfFirstPost, indexOfLastPost);
+    const currentVacancies = filteredVacancies.slice(indexOfFirstPost, indexOfLastPost);
+
+    const totalPages = Math.ceil(filteredVacancies.length / postsPerPage);
+
+    useEffect(() => {
+        if (currentPage > totalPages) {
+            setCurrentPage(1);
+        }
+    }, [filteredVacancies, currentPage, totalPages]);
 
     return (
         <div className="flex flex-col items-center justify-center">
@@ -27,6 +43,7 @@ export default function JobsList() {
                 totalPosts={vacancies.length}
                 postsPerPage={postsPerPage}
                 setCurrentPage={setCurrentPage}
+                totalPages={totalPages}
             />
         </div>
     );
