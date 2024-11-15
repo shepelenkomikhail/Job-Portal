@@ -1,29 +1,26 @@
-import vacancies from '../../storage/vacancies.json';
-import { VacancyInterface } from '../../types/VacancyInterface';
+import { useAtom } from "jotai/index";
+import { searchTermAtom, relevanceAtom, dateAtom, gridVal } from "./JobsSearch";
+import vacancies from "../../storage/vacancies.json";
+import { VacancyInterface } from "../../types/VacancyInterface";
 import JobCard from "./JobCard";
 import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
-import { useAtom } from "jotai/index";
-import { gridVal, searchTermAtom } from "./JobsSearch";
 
-export default function JobsList({
-                                     selectedIndustries,
-                                     selectedJobTypes,
-                                     selectedCompanies,
-                                     selectedLocations,
-                                     selectedRemote,
-                                     selectedBenefits,
-                                     searchTerm,
-                                 }: {
+interface JobsListProps {
     selectedIndustries: string[];
     selectedJobTypes: string[];
     selectedCompanies: string[];
     selectedLocations: string[];
     selectedRemote: string[];
     selectedBenefits: string[];
-    searchTerm: string;
-}) {
+}
+
+export default function JobsList({selectedIndustries, selectedJobTypes, selectedCompanies, selectedLocations, selectedRemote, selectedBenefits,}: JobsListProps) {
     const [grid] = useAtom(gridVal);
+    const [searchTerm] = useAtom(searchTermAtom);
+    const [selectedRelevanceOption] = useAtom(relevanceAtom);
+    const [selectedDateOption] = useAtom(dateAtom);
+
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage: 8 | 5 = grid ? 8 : 5;
 
@@ -54,41 +51,41 @@ export default function JobsList({
         const matchesBenefits =
             selectedBenefits.length === 0 || selectedBenefits.every(benefit => {
                 if (vacancy.benefits) {
-                    vacancy.benefits.includes(benefit)
-                } else {
-                    return false;
+                    return vacancy.benefits.includes(benefit);
                 }
+                return false;
             });
 
-        return (
-            searchTermAtom &&
-            matchesSearchTerm &&
-            matchesIndustry &&
-            matchesJobType &&
-            matchesCompany &&
-            matchesLocation &&
-            matchesRemote &&
-            matchesBenefits
-        );
+        return (matchesSearchTerm && matchesIndustry && matchesJobType && matchesCompany && matchesLocation && matchesRemote && matchesBenefits);
+    });
+
+    // @ts-ignore
+    const sortedVacancies: VacancyInterface[] = filteredVacancies.sort((a:VacancyInterface, b: VacancyInterface) => {
+        if (selectedRelevanceOption) {
+            return b.relevancePoints - a.relevancePoints;
+        } else if (selectedDateOption) {
+            return new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime();
+        }
+        return filteredVacancies;
     });
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentVacancies = filteredVacancies.slice(indexOfFirstPost, indexOfLastPost);
+    const currentVacancies = sortedVacancies.slice(indexOfFirstPost, indexOfLastPost);
 
     const totalPages = Math.ceil(filteredVacancies.length / postsPerPage);
 
     useEffect(() => {
         if (currentPage > totalPages) {
-            setCurrentPage(1);
+            setCurrentPage(totalPages);
         }
-    }, [filteredVacancies, currentPage, totalPages]);
+    }, [totalPages, currentPage]);
 
     return (
         <div className="flex flex-col items-center justify-center">
             <div className={`gap-8 m-6 w-10/12 flex ${grid ? "flex-wrap flex-row" : "flex-col"}`}>
-                {currentVacancies.map((vacancy: VacancyInterface, index: number) => (
-                    <JobCard key={index} vacancy={{ ...vacancy }} grid={grid} />
+                {currentVacancies.map((vacancy, index) => (
+                    <JobCard key={index} vacancy={vacancy} grid={grid} />
                 ))}
             </div>
             <Pagination

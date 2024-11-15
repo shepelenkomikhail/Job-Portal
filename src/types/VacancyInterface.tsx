@@ -10,4 +10,5 @@ export interface VacancyInterface {
     benefits?: string[];
     datePosted: string;
     saved: boolean;
+    relevancePoints: number;
 }
