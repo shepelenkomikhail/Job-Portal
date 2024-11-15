@@ -31,14 +31,22 @@ export default function JobsSearch() {
     }, [search, setSearchTerm]);
 
     const handleRelevanceChange = () => {
-        setSelectedRelevanceOption(true);
-        setSelectedDateOption(false);
+        if (selectedRelevanceOption) {
+            setSelectedRelevanceOption(false);
+        } else {
+            setSelectedRelevanceOption(true);
+            setSelectedDateOption(false);
+        }
     };
 
     const handleDateChange = () => {
-        setSelectedDateOption(true);
-        setSelectedRelevanceOption(false);
-    };
+        if (selectedDateOption) {
+            setSelectedDateOption(false);
+        } else {
+            setSelectedDateOption(true);
+            setSelectedRelevanceOption(false);
+        }
+    }
 
     return (
         <div className={"col-span-2 ml-2 flex flex-col"}>
