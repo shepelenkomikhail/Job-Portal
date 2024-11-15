@@ -16,7 +16,7 @@ interface FiltersProps {
     setSearchTerm: (term: string) => void;
 }
 
-export default function Filters({onLocationSelect, onJobTypeSelect, onCompanySelect, onRemoteSelect, onIndustrySelect, onBenefitsSelect, setSearchTerm,}: FiltersProps) {
+export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySelect, onRemoteSelect, onIndustrySelect, onBenefitsSelect, setSearchTerm, }: FiltersProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [resetFilters, setResetFilters] = useState(false);
 
@@ -38,39 +38,41 @@ export default function Filters({onLocationSelect, onJobTypeSelect, onCompanySel
 
     return (
         <>
-            <div className="hidden lg:flex flex-col border-r border-gray-300 pr-4">
+            <div className="flex hidden flex-col border-r border-gray-300 pr-4 lg:flex" role="complementary" aria-label="Filter sidebar">
                 <button
                     role="button"
-                    className="ml-auto mb-2"
+                    aria-label="Clear all filters"
+                    className="mb-2 ml-auto"
                     onClick={handleClearFilters}
                 >
-                    <p className="text-right text-placeholder font-semibold hover:text-gray-700">
+                    <p className="font-semibold text-placeholder text-right hover:text-gray-700">
                         Clear all filters
                     </p>
                 </button>
                 <div className="flex flex-col gap-8">
-                    <LocationFilter onLocationSelect={onLocationSelect} reset={resetFilters}/>
-                    <JobTypeFilter onJobTypeSelect={onJobTypeSelect} reset={resetFilters}/>
-                    <CompanyFilter onCompanySelect={onCompanySelect} reset={resetFilters}/>
-                    <RemoteFilter onRemoteSelect={onRemoteSelect} reset={resetFilters}/>
-                    <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters}/>
-                    <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters}/>
+                    <LocationFilter onLocationSelect={onLocationSelect} reset={resetFilters} />
+                    <JobTypeFilter onJobTypeSelect={onJobTypeSelect} reset={resetFilters} />
+                    <CompanyFilter onCompanySelect={onCompanySelect} reset={resetFilters} />
+                    <RemoteFilter onRemoteSelect={onRemoteSelect} reset={resetFilters} />
+                    <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters} />
+                    <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters} />
                 </div>
             </div>
 
-            <div className="lg:hidden">
+            <div className="lg:hidden" role="dialog" aria-modal="true">
                 <button
                     role="button"
                     aria-label="Open filters"
                     onClick={toggleSidebar}
-                    className="p-2 rounded-md focus:outline-none"
+                    className="rounded-md p-2 focus:outline-none"
                 >
                     <svg
-                        className="w-12 h-12 text-gray-600 absolute -translate-x-4 -translate-y-4"
+                        className="absolute mt-1 ml-3 h-12 w-12 text-gray-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
                     >
                         <path
                             strokeLinecap="round"
@@ -83,29 +85,29 @@ export default function Filters({onLocationSelect, onJobTypeSelect, onCompanySel
             </div>
 
             <div
-                className={`fixed inset-0 z-50 flex lg:hidden bg-black bg-opacity-50 transition-transform duration-500 ease-in ${
-                    isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-                }`}
+                className={`fixed inset-0 z-50 flex bg-black bg-opacity-50 transition-transform duration-500 ease-in ${isSidebarOpen ? "opacity-100" : "pointer-events-none opacity-0"} lg:hidden`}
                 onClick={toggleSidebar}
+                role="dialog"
+                aria-label="Mobile filter sidebar"
             >
                 <div
-                    className={`relative w-2/3 bg-white p-4 shadow-lg h-full overflow-y-auto transition-transform duration-500 ease-in transform ${
-                        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-                    }`}
+                    className={`relative h-full w-2/3 transform overflow-y-auto bg-white p-4 shadow-lg transition-transform duration-500 ease-in ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
                     onClick={(e) => e.stopPropagation()}
+                    aria-labelledby="filter-sidebar-title"
                 >
                     <button
                         role="button"
                         aria-label="Close filters"
                         onClick={toggleSidebar}
-                        className="absolute top-4 right-4 text-gray-600"
+                        className="absolute right-4 top-4 text-gray-600"
                     >
                         <svg
-                            className="w-6 h-6"
+                            className="h-6 w-6"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
                         >
                             <path
                                 strokeLinecap="round"
@@ -115,18 +117,18 @@ export default function Filters({onLocationSelect, onJobTypeSelect, onCompanySel
                             />
                         </svg>
                     </button>
-                    <button role="button" className="ml-auto mb-2" onClick={handleClearFilters}>
-                        <p className="text-right text-placeholder font-semibold">Clear all filters</p>
+                    <button role="button" aria-label="Clear all filters" className="mb-2 ml-auto" onClick={handleClearFilters}>
+                        <p className="font-semibold text-placeholder text-right">Clear all filters</p>
                     </button>
                     <div className="flex flex-col gap-8">
-                        <LocationFilter onLocationSelect={onLocationSelect} reset={resetFilters}/>
-                        <JobTypeFilter onJobTypeSelect={onJobTypeSelect} reset={resetFilters}/>
-                        <CompanyFilter onCompanySelect={onCompanySelect} reset={resetFilters}/>
-                        <RemoteFilter onRemoteSelect={onRemoteSelect} reset={resetFilters}/>
-                        <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters}/>
-                        <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters}/>
+                        <LocationFilter onLocationSelect={onLocationSelect} reset={resetFilters} />
+                        <JobTypeFilter onJobTypeSelect={onJobTypeSelect} reset={resetFilters} />
+                        <CompanyFilter onCompanySelect={onCompanySelect} reset={resetFilters} />
+                        <RemoteFilter onRemoteSelect={onRemoteSelect} reset={resetFilters} />
+                        <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters} />
+                        <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters} />
                     </div>
-                    <button className={"grayButton"} onClick={toggleSidebar}>Search</button>
+                    <button className="grayButton mt-2 w-full" onClick={toggleSidebar} aria-label="Search filters">Search</button>
                 </div>
             </div>
         </>

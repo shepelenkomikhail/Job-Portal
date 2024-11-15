@@ -47,25 +47,50 @@ const Pagination = ({ setCurrentPage, totalPages }: PaginationProps) => {
     const pages = getPageRange();
 
     return (
-        <div className="flex gap-2">
-            <button onClick={handlePrevious} disabled={currentPage === 1} className="px-2 py-1 border rounded hover:bg-gray-200">
+        <div className="flex gap-2" role="navigation" aria-label="Pagination">
+            <button
+                onClick={handlePrevious}
+                disabled={currentPage === 1}
+                className="px-4 py-2 border rounded hover:bg-gray-300"
+                aria-label="Previous page"
+                aria-disabled={currentPage === 1 ? "true" : "false"}
+            >
                 &lt;
             </button>
 
             {pages.map((page, index) => {
                 if (page === "...") {
-                    return (<span key={index} className="px-2 py-1">...</span>);
+                    return (
+                        <span
+                            key={index}
+                            className="px-2 py-1"
+                            aria-hidden="true"
+                        >
+                        ...
+                    </span>
+                    );
                 } else {
                     return (
-                        <button key={index} onClick={() => handleClick(page as number)}
-                            className={`px-2 py-1 border rounded ${currentPage === page ? "bg-blue-500 text-white" : "bg-gray-200"}`}>
+                        <button
+                            key={index}
+                            onClick={() => handleClick(page as number)}
+                            className={`px-4 py-2 border rounded ${currentPage === page ? "bg-blue-600 text-white" : "border-gray-300"}`}
+                            aria-current={currentPage === page ? "page" : undefined}
+                            aria-label={`Page ${page}`}
+                        >
                             {page}
                         </button>
                     );
                 }
             })}
 
-            <button onClick={handleNext} disabled={currentPage === totalPages} className="px-2 py-1 border rounded hover:bg-gray-200">
+            <button
+                onClick={handleNext}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 border rounded hover:bg-gray-300"
+                aria-label="Next page"
+                aria-disabled={currentPage === totalPages ? "true" : "false"}
+            >
                 &gt;
             </button>
         </div>

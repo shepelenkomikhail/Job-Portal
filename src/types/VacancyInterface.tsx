@@ -11,4 +11,5 @@ export interface VacancyInterface {
     datePosted: string;
     saved: boolean;
     relevancePoints: number;
+    applied: boolean;
 }

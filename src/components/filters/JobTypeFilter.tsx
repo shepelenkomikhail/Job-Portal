@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import CheckBox from "../styled_elements/CheckBox.tsx";
 
 interface JobTypeFilterProps {
@@ -21,25 +21,29 @@ export default function JobTypeFilter({ onJobTypeSelect, reset }: JobTypeFilterP
     };
 
     useEffect(() => {
-        if(reset){
+        if (reset) {
             setSelectedJobTypes([]);
         }
     }, [reset]);
 
     return (
-        <div>
-            <h3 className={"mb-2"}>Job Type</h3>
-            <div className={"grid grid-cols-2"}>
-                <CheckBox
-                    label="Full Time"
-                    checked={selectedJobTypes.includes("Full Time")}
-                    onChange={() => handleJobTypeChange("Full Time")}
-                />
-                <CheckBox
-                    label="Part Time"
-                    checked={selectedJobTypes.includes("Part Time")}
-                    onChange={() => handleJobTypeChange("Part Time")}
-                />
+        <div role="region" aria-labelledby="job-type-filter" className="space-y-4">
+            <h3 id="job-type-filter" className="mb-2 text-lg font-semibold" role="heading">Job Type</h3>
+            <div role="group" aria-labelledby="job-type-selection" className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-0">
+                <div role="checkbox" aria-checked={selectedJobTypes.includes("Full Time")} aria-label="Full Time">
+                    <CheckBox
+                        label="Full Time"
+                        checked={selectedJobTypes.includes("Full Time")}
+                        onChange={() => handleJobTypeChange("Full Time")}
+                    />
+                </div>
+                <div role="checkbox" aria-checked={selectedJobTypes.includes("Part Time")} aria-label="Part Time">
+                    <CheckBox
+                        label="Part Time"
+                        checked={selectedJobTypes.includes("Part Time")}
+                        onChange={() => handleJobTypeChange("Part Time")}
+                    />
+                </div>
             </div>
         </div>
     );

@@ -11,16 +11,23 @@ interface InputProps {
 
 export default function Input({ type, placeholder, onChange, svg, width, value }: InputProps) {
     return (
-        <div className={"flex items-center relative 2xl:w-1/2"} style={{ width: `${width}` }}>
-            <input type={type} placeholder={placeholder} onChange={onChange} value={value}
-                   className={`w-full bg-gray-50 border border-gray-600 rounded-md p-2 pl-4 focus:outline-0
-                    focus:border-blue-500 focus:border-2`} style={svg ? { paddingLeft: '3rem' } : {}}
+        <div className="relative flex items-center" style={{ width: `${width}` }} role="presentation">
+            <input
+                type={type}
+                placeholder={placeholder}
+                onChange={onChange}
+                value={value}
+                className="w-full bg-gray-50 border border-gray-600 rounded-md p-2 pl-12 focus:outline-0 focus:border-blue-500 focus:border-2"
+                aria-placeholder={placeholder}
+                role="textbox"
+                aria-describedby={svg ? "input-icon" : undefined}
             />
             {svg && (
-                <span className={"absolute left-2"}>
-                    {svg}
-                </span>
+                <span className="absolute left-2" role="img" aria-hidden="true" id="input-icon">
+                {svg}
+            </span>
             )}
         </div>
     );
+
 }

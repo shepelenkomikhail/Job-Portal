@@ -11,7 +11,8 @@
     "benefits": ["Medical insurance", "Dental insurance", "Pension plan", "Remote work"],
     "saved": true,
     "datePosted": "2023-11-01",
-    "relevancePoints": 82
+    "relevancePoints": 82,
+    "applied": true
   },
   {
     "id": 2,
@@ -25,7 +26,8 @@
     "benefits": ["Maternity leave", "Student loan assistance", "Pension plan"],
     "saved": false,
     "datePosted": "2023-10-28",
-    "relevancePoints": 60
+    "relevancePoints": 60,
+    "applied": false
   },
   {
     "id": 3,
@@ -39,7 +41,8 @@
     "benefits": ["Medical insurance", "Flexible hours", "Dental insurance"],
     "saved": false,
     "datePosted": "2023-11-05",
-    "relevancePoints": 75
+    "relevancePoints": 75,
+    "applied": false
   },
   {
     "id": 4,
@@ -53,7 +56,8 @@
     "benefits": ["Medical insurance", "Pension plan", "Maternity leave", "Childcare support"],
     "saved": false,
     "datePosted": "2023-10-20",
-    "relevancePoints": 50
+    "relevancePoints": 50,
+    "applied": true
   },
   {
     "id": 5,
@@ -67,7 +71,8 @@
     "benefits": ["Flexible hours", "Health insurance", "Gym membership discount"],
     "saved": true,
     "datePosted": "2023-11-08",
-    "relevancePoints": 90
+    "relevancePoints": 90,
+    "applied": true
   },
   {
     "id": 6,
@@ -81,7 +86,8 @@
     "benefits": ["Medical insurance", "Dental insurance", "Professional development"],
     "saved": false,
     "datePosted": "2023-10-15",
-    "relevancePoints": 68
+    "relevancePoints": 68,
+    "applied": false
   },
   {
     "id": 7,
@@ -95,7 +101,8 @@
     "benefits": ["Medical insurance", "Stock options", "Gym membership", "Remote work flexibility"],
     "saved": false,
     "datePosted": "2023-11-10",
-    "relevancePoints": 80
+    "relevancePoints": 80,
+    "applied": false
   },
   {
     "id": 8,
@@ -109,7 +116,8 @@
     "benefits": ["Medical insurance", "Pension plan", "Paid time off"],
     "saved": false,
     "datePosted": "2023-09-30",
-    "relevancePoints": 48
+    "relevancePoints": 48,
+    "applied": false
   },
   {
     "id": 9,
@@ -123,7 +131,8 @@
     "benefits": ["Flexible hours", "Health insurance", "Professional development"],
     "saved": true,
     "datePosted": "2023-11-12",
-    "relevancePoints": 85
+    "relevancePoints": 85,
+    "applied": false
   },
   {
     "id": 10,
@@ -137,7 +146,8 @@
     "benefits": ["Medical insurance", "Pension plan", "Gym membership"],
     "saved": false,
     "datePosted": "2023-10-10",
-    "relevancePoints": 64
+    "relevancePoints": 64,
+    "applied": false
   },
   {
     "id": 11,
@@ -151,7 +161,8 @@
     "benefits": ["Medical insurance", "Dental insurance", "Pension plan"],
     "saved": false,
     "datePosted": "2023-11-03",
-    "relevancePoints": 72
+    "relevancePoints": 72,
+    "applied": false
   },
   {
     "id": 12,
@@ -165,7 +176,8 @@
     "benefits": ["Flexible hours", "Professional development"],
     "saved": false,
     "datePosted": "2023-10-05",
-    "relevancePoints": 54
+    "relevancePoints": 54,
+    "applied": false
   },
   {
     "id": 13,
@@ -179,7 +191,8 @@
     "benefits": ["Medical insurance", "Stock options", "Flexible hours"],
     "saved": false,
     "datePosted": "2023-11-07",
-    "relevancePoints": 77
+    "relevancePoints": 77,
+    "applied": false
   },
   {
     "id": 14,
@@ -193,7 +206,8 @@
     "benefits": ["Flexible hours", "Remote work"],
     "saved": false,
     "datePosted": "2023-10-27",
-    "relevancePoints": 65
+    "relevancePoints": 65,
+    "applied": false
   },
   {
     "id": 15,
@@ -207,7 +221,8 @@
     "benefits": ["Medical insurance", "Pension plan", "Professional development"],
     "saved": true,
     "datePosted": "2023-11-06",
-    "relevancePoints": 83
+    "relevancePoints": 83,
+    "applied": false
   },
   {
     "id": 16,
@@ -221,7 +236,8 @@
     "benefits": ["Flexible hours", "Remote work", "Health insurance"],
     "saved": false,
     "datePosted": "2023-10-15",
-    "relevancePoints": 62
+    "relevancePoints": 62,
+    "applied": false
   },
   {
     "id": 17,
@@ -235,7 +251,8 @@
     "benefits": ["Medical insurance", "Childcare support", "Pension plan"],
     "saved": false,
     "datePosted": "2023-11-09",
-    "relevancePoints": 58
+    "relevancePoints": 58,
+    "applied": false
   },
   {
     "id": 18,
@@ -249,7 +266,8 @@
     "benefits": ["Medical insurance", "Flexible hours", "Gym membership"],
     "saved": false,
     "datePosted": "2023-10-11",
-    "relevancePoints": 71
+    "relevancePoints": 71,
+    "applied": false
   },
   {
     "id": 19,
@@ -263,7 +281,8 @@
     "benefits": ["Medical insurance", "Pension plan", "Childcare support"],
     "saved": true,
     "datePosted": "2023-11-02",
-    "relevancePoints": 79
+    "relevancePoints": 79,
+    "applied": false
   },
   {
     "id": 20,
@@ -277,6 +296,7 @@
     "benefits": ["Medical insurance", "Pension plan", "Paid time off"],
     "saved": false,
     "datePosted": "2023-11-03",
-    "relevancePoints": 67
+    "relevancePoints": 67,
+    "applied": false
   }
 ]

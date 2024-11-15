@@ -7,17 +7,25 @@ import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
 
 interface JobsListProps {
-    selectedIndustries: string[];
-    selectedJobTypes: string[];
-    selectedCompanies: string[];
-    selectedLocations: string[];
-    selectedRemote: string[];
-    selectedBenefits: string[];
+    selectedIndustries: string[],
+    selectedJobTypes: string[],
+    selectedCompanies: string[],
+    selectedLocations: string[],
+    selectedRemote: string[],
+    selectedBenefits: string[],
+    searchTerm?: string,
 }
 
-export default function JobsList({selectedIndustries, selectedJobTypes, selectedCompanies, selectedLocations, selectedRemote, selectedBenefits,}: JobsListProps) {
+export default function JobsList({
+                                     selectedIndustries,
+                                     selectedJobTypes,
+                                     selectedCompanies,
+                                     selectedLocations,
+                                     selectedRemote,
+                                     selectedBenefits,
+                                 }: JobsListProps) {
     const [grid] = useAtom(gridVal);
-    const [searchTerm] = useAtom(searchTermAtom);
+    const [searchTermA] = useAtom(searchTermAtom);
     const [selectedRelevanceOption] = useAtom(relevanceAtom);
     const [selectedDateOption] = useAtom(dateAtom);
 
@@ -25,7 +33,7 @@ export default function JobsList({selectedIndustries, selectedJobTypes, selected
     const postsPerPage: 8 | 5 = grid ? 8 : 5;
 
     const filteredVacancies = vacancies.filter((vacancy: VacancyInterface) => {
-        const lowerSearch = searchTerm.toLowerCase();
+        const lowerSearch = searchTermA.toLowerCase();
 
         const matchesSearchTerm =
             vacancy.title.toLowerCase().includes(lowerSearch) ||
@@ -59,8 +67,7 @@ export default function JobsList({selectedIndustries, selectedJobTypes, selected
         return (matchesSearchTerm && matchesIndustry && matchesJobType && matchesCompany && matchesLocation && matchesRemote && matchesBenefits);
     });
 
-    // @ts-ignore
-    const sortedVacancies: VacancyInterface[] = filteredVacancies.sort((a:VacancyInterface, b: VacancyInterface) => {
+    const sortedVacancies: VacancyInterface[] = filteredVacancies.sort((a: VacancyInterface, b: VacancyInterface) => {
         if (selectedRelevanceOption) {
             return b.relevancePoints - a.relevancePoints;
         } else if (selectedDateOption) {
@@ -82,10 +89,10 @@ export default function JobsList({selectedIndustries, selectedJobTypes, selected
     }, [totalPages, currentPage]);
 
     return (
-        <div className="flex flex-col items-center justify-center">
-            <div className={`gap-8 m-6 w-10/12 flex ${grid ? "flex-wrap flex-row" : "flex-col"}`}>
+        <div className="flex flex-col items-center justify-center mt-8" role="region" aria-labelledby="jobs-list">
+            <div className={`gap-8 m-6 lg:mb-12 w-10/12 flex ${grid ? "flex-wrap flex-row items-center justify-center xl:gap-12 w-full" : "flex-col"}`} role="list">
                 {currentVacancies.map((vacancy, index) => (
-                    <JobCard key={index} vacancy={vacancy} grid={grid} />
+                    <JobCard key={index} vacancy={vacancy} grid={grid} role="listitem"/>
                 ))}
             </div>
             <Pagination
@@ -93,6 +100,7 @@ export default function JobsList({selectedIndustries, selectedJobTypes, selected
                 postsPerPage={postsPerPage}
                 setCurrentPage={setCurrentPage}
                 totalPages={totalPages}
+                aria-label="Pagination Navigation"
             />
         </div>
     );
