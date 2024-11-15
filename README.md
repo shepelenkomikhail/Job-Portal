@@ -21,6 +21,11 @@ To make your README align more closely with the **requirements** and **features*
 
 ---
 
+### **API Integration**
+- **OpenCageData**: Used for geolocation and location-based job filtering, providing accurate location-based job recommendations.
+
+---
+
 ## 🚀 **Live Demo**
 Access the portal here: [**Job Portal One**](https://job-portal-one-blush.vercel.app/)
 

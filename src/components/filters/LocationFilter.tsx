@@ -40,7 +40,6 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
     }, [reset]);
 
     useEffect(() => {
-        // Event listener to close dropdown when clicking outside
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setIsDropdownVisible(false);
