@@ -20,10 +20,9 @@ export default function Header() {
     useEffect(() => {
         const appliedData = JSON.parse(localStorage.getItem("applied") || "[]");
         const savedData = JSON.parse(localStorage.getItem("saved") || "[]");
-
         setAppliedVacancies(appliedData);
         setSavedVacancies(savedData);
-    }, []);
+    }, [localStorage.getItem("applied"), localStorage.getItem("saved")]);
 
     return (
         <>
@@ -169,7 +168,7 @@ export default function Header() {
                         <div className="flex flex-col items-center gap-8">
                             {savedVacancies.length > 0 ? (
                                 savedVacancies.map((vacancy, index) => (
-                                    <JobCard key={index} vacancy={vacancy} grid={isSmallScreen} />
+                                    <JobCard key={index} vacancy={vacancy} grid={isSmallScreen} fromSidebar={true}/>
                                 ))
                             ) : (
                                 <p className="text-center text-gray-500 mt-10">

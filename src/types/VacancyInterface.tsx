@@ -12,4 +12,5 @@ export interface VacancyInterface {
     saved: boolean;
     relevancePoints: number;
     applied: boolean;
+    jobDescription: string;
 }

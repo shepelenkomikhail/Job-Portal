@@ -9,10 +9,11 @@
     "remote": "Hybrid",
     "location": "San , CA",
     "benefits": ["Medical insurance", "Dental insurance", "Pension plan", "Remote work"],
-    "saved": true,
+    "saved": false,
     "datePosted": "2023-11-01",
     "relevancePoints": 82,
-    "applied": true
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 2,
@@ -27,7 +28,8 @@
     "saved": false,
     "datePosted": "2023-10-28",
     "relevancePoints": 60,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 3,
@@ -42,7 +44,8 @@
     "saved": false,
     "datePosted": "2023-11-05",
     "relevancePoints": 75,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 4,
@@ -57,7 +60,8 @@
     "saved": false,
     "datePosted": "2023-10-20",
     "relevancePoints": 50,
-    "applied": true
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 5,
@@ -69,10 +73,11 @@
     "remote": "Remote",
     "location": "Los Angeles, CA",
     "benefits": ["Flexible hours", "Health insurance", "Gym membership discount"],
-    "saved": true,
+    "saved": false,
     "datePosted": "2023-11-08",
     "relevancePoints": 90,
-    "applied": true
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 6,
@@ -87,7 +92,8 @@
     "saved": false,
     "datePosted": "2023-10-15",
     "relevancePoints": 68,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 7,
@@ -102,7 +108,8 @@
     "saved": false,
     "datePosted": "2023-11-10",
     "relevancePoints": 80,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 8,
@@ -117,7 +124,8 @@
     "saved": false,
     "datePosted": "2023-09-30",
     "relevancePoints": 48,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 9,
@@ -129,10 +137,11 @@
     "remote": "Remote",
     "location": "Phoenix, AZ",
     "benefits": ["Flexible hours", "Health insurance", "Professional development"],
-    "saved": true,
+    "saved": false,
     "datePosted": "2023-11-12",
     "relevancePoints": 85,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 10,
@@ -147,7 +156,8 @@
     "saved": false,
     "datePosted": "2023-10-10",
     "relevancePoints": 64,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 11,
@@ -162,7 +172,8 @@
     "saved": false,
     "datePosted": "2023-11-03",
     "relevancePoints": 72,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 12,
@@ -177,7 +188,8 @@
     "saved": false,
     "datePosted": "2023-10-05",
     "relevancePoints": 54,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 13,
@@ -192,7 +204,8 @@
     "saved": false,
     "datePosted": "2023-11-07",
     "relevancePoints": 77,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 14,
@@ -207,7 +220,8 @@
     "saved": false,
     "datePosted": "2023-10-27",
     "relevancePoints": 65,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 15,
@@ -219,10 +233,11 @@
     "remote": "On Site",
     "location": "St. Louis, MO",
     "benefits": ["Medical insurance", "Pension plan", "Professional development"],
-    "saved": true,
+    "saved": false,
     "datePosted": "2023-11-06",
     "relevancePoints": 83,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 16,
@@ -237,7 +252,8 @@
     "saved": false,
     "datePosted": "2023-10-15",
     "relevancePoints": 62,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 17,
@@ -252,7 +268,8 @@
     "saved": false,
     "datePosted": "2023-11-09",
     "relevancePoints": 58,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 18,
@@ -267,7 +284,8 @@
     "saved": false,
     "datePosted": "2023-10-11",
     "relevancePoints": 71,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 19,
@@ -279,10 +297,11 @@
     "remote": "On Site",
     "location": "Orlando, FL",
     "benefits": ["Medical insurance", "Pension plan", "Childcare support"],
-    "saved": true,
+    "saved": false,
     "datePosted": "2023-11-02",
     "relevancePoints": 79,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   },
   {
     "id": 20,
@@ -297,6 +316,7 @@
     "saved": false,
     "datePosted": "2023-11-03",
     "relevancePoints": 67,
-    "applied": false
+    "applied": false,
+    "jobDescription": ""
   }
 ]
