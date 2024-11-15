@@ -3,7 +3,12 @@ import Input from "../styled_elements/Input.tsx";
 
 const API_KEY = "43bddd270498446c9b44f1cc1acaeb05";
 
-export default function LocationFilter({ onLocationSelect }) {
+interface LocationFilterProps {
+    onLocationSelect: (locations: string[]) => void;
+    reset: boolean;
+}
+
+export default function LocationFilter({ onLocationSelect , reset}: LocationFilterProps) {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [filteredLocations, setFilteredLocations] = useState<any[]>([]);
     const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
@@ -26,6 +31,12 @@ export default function LocationFilter({ onLocationSelect }) {
             setFilteredLocations([]);
         }
     }, [searchTerm]);
+
+    useEffect(() => {
+        if (reset) {
+            setSelectedLocations([]);
+        }
+    }, [reset]);
 
     const handleLocationSelect = (location: string) => {
         if (!selectedLocations.includes(location)) {

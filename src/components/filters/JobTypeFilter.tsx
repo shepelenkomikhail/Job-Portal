@@ -1,7 +1,12 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import CheckBox from "../styled_elements/CheckBox.tsx";
 
-export default function JobTypeFilter({ onJobTypeSelect }) {
+interface JobTypeFilterProps {
+    onJobTypeSelect: (jobTypes: string[]) => void;
+    reset: boolean;
+}
+
+export default function JobTypeFilter({ onJobTypeSelect, reset }: JobTypeFilterProps) {
     const [selectedJobTypes, setSelectedJobTypes] = useState<string[]>([]);
 
     const handleJobTypeChange = (jobType: string) => {
@@ -14,6 +19,12 @@ export default function JobTypeFilter({ onJobTypeSelect }) {
             return updatedJobTypes;
         });
     };
+
+    useEffect(() => {
+        if(reset){
+            setSelectedJobTypes([]);
+        }
+    }, [reset]);
 
     return (
         <div>

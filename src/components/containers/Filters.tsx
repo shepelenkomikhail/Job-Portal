@@ -16,16 +16,9 @@ interface FiltersProps {
     setSearchTerm: (term: string) => void;
 }
 
-export default function Filters({
-                                    onLocationSelect,
-                                    onJobTypeSelect,
-                                    onCompanySelect,
-                                    onRemoteSelect,
-                                    onIndustrySelect,
-                                    onBenefitsSelect,
-                                    setSearchTerm,
-                                }: FiltersProps) {
+export default function Filters({onLocationSelect, onJobTypeSelect, onCompanySelect, onRemoteSelect, onIndustrySelect, onBenefitsSelect, setSearchTerm,}: FiltersProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [resetFilters, setResetFilters] = useState(false);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -39,6 +32,8 @@ export default function Filters({
         onRemoteSelect([]);
         onBenefitsSelect([]);
         setSearchTerm("");
+        setResetFilters(true);
+        setTimeout(() => setResetFilters(false), 0);
     };
 
     return (
@@ -49,19 +44,18 @@ export default function Filters({
                     className="ml-auto mb-2"
                     onClick={handleClearFilters}
                 >
-                    <p className="text-right text-placeholder font-semibold">
+                    <p className="text-right text-placeholder font-semibold hover:text-gray-700">
                         Clear all filters
                     </p>
                 </button>
                 <div className="flex flex-col gap-8">
-                    <LocationFilter onLocationSelect={onLocationSelect} />
-                    <JobTypeFilter onJobTypeSelect={onJobTypeSelect} />
-                    <CompanyFilter onCompanySelect={onCompanySelect}/>
-                    <RemoteFilter onRemoteSelect={onRemoteSelect} />
-                    <IndustryFilter onIndustrySelect={onIndustrySelect} />
-                    <BenefitsFilter onBenefitsSelect={onBenefitsSelect}/>
+                    <LocationFilter onLocationSelect={onLocationSelect} reset={resetFilters}/>
+                    <JobTypeFilter onJobTypeSelect={onJobTypeSelect} reset={resetFilters}/>
+                    <CompanyFilter onCompanySelect={onCompanySelect} reset={resetFilters}/>
+                    <RemoteFilter onRemoteSelect={onRemoteSelect} reset={resetFilters}/>
+                    <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters}/>
+                    <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters}/>
                 </div>
-                <button className={"grayButton mt-8"}>Search</button>
             </div>
 
             <div className="lg:hidden">
@@ -125,14 +119,14 @@ export default function Filters({
                         <p className="text-right text-placeholder font-semibold">Clear all filters</p>
                     </button>
                     <div className="flex flex-col gap-8">
-                        <LocationFilter onLocationSelect={onLocationSelect} />
-                        <JobTypeFilter onJobTypeSelect={onJobTypeSelect} />
-                        <CompanyFilter onCompanySelect={onCompanySelect}/>
-                        <RemoteFilter onRemoteSelect={onRemoteSelect} />
-                        <IndustryFilter onIndustrySelect={onIndustrySelect} />
-                        <BenefitsFilter onBenefitsSelect={onBenefitsSelect}/>
+                        <LocationFilter onLocationSelect={onLocationSelect} reset={resetFilters}/>
+                        <JobTypeFilter onJobTypeSelect={onJobTypeSelect} reset={resetFilters}/>
+                        <CompanyFilter onCompanySelect={onCompanySelect} reset={resetFilters}/>
+                        <RemoteFilter onRemoteSelect={onRemoteSelect} reset={resetFilters}/>
+                        <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters}/>
+                        <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters}/>
                     </div>
-                    <button className={"grayButton"}>Search</button>
+                    <button className={"grayButton"} onClick={toggleSidebar}>Search</button>
                 </div>
             </div>
         </>

@@ -1,7 +1,12 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import CheckBox from "../styled_elements/CheckBox.tsx";
 
-export default function BenefitsFilter({ onBenefitsSelect }) {
+interface BenefitsFilterProps {
+    onBenefitsSelect: (benefits: string[]) => void;
+    reset: boolean;
+}
+
+export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilterProps) {
     const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
 
     const handleBenefitChange = (benefit: string) => {
@@ -14,6 +19,12 @@ export default function BenefitsFilter({ onBenefitsSelect }) {
             return updatedBenefits;
         });
     };
+
+    useEffect(() => {
+        if (reset) {
+            setSelectedBenefits([]);
+        }
+    }, [reset]);
 
     return (
         <div>

@@ -1,7 +1,12 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import CheckBox from "../styled_elements/CheckBox.tsx";
 
-export default function RemoteFilter({ onRemoteSelect }) {
+interface RemoteFilterProps {
+    onRemoteSelect: (remoteOptions: string[]) => void;
+    reset: boolean;
+}
+
+export default function RemoteFilter({ onRemoteSelect, reset }: RemoteFilterProps) {
     const [selectedRemoteOptions, setSelectedRemoteOptions] = useState<string[]>([]);
 
     const handleRemoteOptionChange = (option: string) => {
@@ -14,6 +19,12 @@ export default function RemoteFilter({ onRemoteSelect }) {
             return updatedRemoteOptions;
         });
     };
+
+    useEffect(() => {
+        if(reset){
+            setSelectedRemoteOptions([]);
+        }
+    }, [reset]);
 
     return (
         <div>

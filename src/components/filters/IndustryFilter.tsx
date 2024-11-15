@@ -5,9 +5,10 @@ import industriesData from "../../storage/industries.json";
 
 interface IndustryFilterProps {
     onIndustrySelect: (industries: string[]) => void;
+    reset: boolean;
 }
 
-export default function IndustryFilter({ onIndustrySelect }: IndustryFilterProps) {
+export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilterProps) {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredIndustries, setFilteredIndustries] = useState(industriesData);
     const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
@@ -25,6 +26,12 @@ export default function IndustryFilter({ onIndustrySelect }: IndustryFilterProps
             setFilteredIndustries(industriesData);
         }
     }, [searchTerm]);
+
+    useEffect(() => {
+        if (reset) {
+            setSelectedIndustries([]);
+        }
+    }, [reset]);
 
     const handleIndustrySelect = (industry: string) => {
         if (!selectedIndustries.includes(industry)) {

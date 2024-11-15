@@ -5,9 +5,10 @@ import companiesData from "../../storage/companies.json";
 
 interface CompanyFilterProps {
     onCompanySelect: (companies: string[]) => void;
+    reset: boolean;
 }
 
-export default function CompanyFilter({ onCompanySelect }: CompanyFilterProps) {
+export default function CompanyFilter({ onCompanySelect, reset }: CompanyFilterProps) {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredCompanies, setFilteredCompanies] = useState(companiesData);
     const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
@@ -25,6 +26,12 @@ export default function CompanyFilter({ onCompanySelect }: CompanyFilterProps) {
             setFilteredCompanies(companiesData);
         }
     }, [searchTerm]);
+
+    useEffect(() => {
+        if (reset) {
+            setSelectedCompanies([]);
+        }
+    }, [reset]);
 
     const handleCompanySelect = (company: string) => {
         if (!selectedCompanies.includes(company)) {
