@@ -31,6 +31,12 @@ export default function JobCard({vacancy, grid}: {vacancy: VacancyInterface, gri
                 </div>
             </button>
 
+            {vacancy.relevancePoints >= 80 && (
+                <div className={`absolute top-0 left-0 bg-green-200 border border-green-800 rounded-md transition-ease-in duration-300 p-1 w-auto h-auto -translate-x-3 -translate-y-4`}>
+                    <p className={"text-green-800 font-semibold text-sm"}>Top Matching!</p>
+                </div>
+            )}
+
             <div>
                 {grid ? (
                     <div className={"flex mt-2"}>
