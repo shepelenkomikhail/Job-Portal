@@ -1,4 +1,4 @@
-export interface VacancyInterface {
+export interface Vacancy {
     id: number;
     company: string;
     companyLogo: string;

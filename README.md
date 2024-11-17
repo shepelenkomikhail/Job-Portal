@@ -12,7 +12,7 @@ To make your README align more closely with the **requirements** and **features*
 
 ## 📋 **Features**
 - 🌐 **AI-Generated Job Listings**: Discover dynamic job postings crafted by AI.
-- 🔍 **Advanced Search**: Filter jobs by title, company, location, and more.
+- 🔍 **Advanced SearchSvg**: Filter jobs by title, company, location, and more.
 - 🎛️ **Detailed Filters**: Narrow results using criteria like experience level, salary range, and job type.
 - 🎯 **AI-Powered Matching**: Job recommendations tailored to user preferences.
 - 📊 **Analytics Dashboard**: Visualize trends like job postings by industry or location.
@@ -38,7 +38,7 @@ Access the portal here: [**Job Portal One**](https://job-portal-one-blush.vercel
 2. Explore the homepage showcasing the latest job vacancies.
 
 ### **How to Use**
-- 🔎 **Search Jobs**: Use the search bar to find specific positions or companies.
+- 🔎 **SearchSvg Jobs**: Use the search bar to find specific positions or companies.
 - 🎛️ **Filter Options**:
     - **General Filters**: Select location, job title, or company.
     - **Specific Filters**: Filter by job type (full-time, part-time, remote), industry and benefits.
@@ -93,7 +93,7 @@ yarn build
 
 ## 💡 **Additional Features**
 
-### **Dynamic Search with Filters**
+### **Dynamic SearchSvg with Filters**
 - Combines both **general** and **specific** filters for precise results.
 - Implements **dynamic filtering**: updates job listings in real-time as filters are applied.
 

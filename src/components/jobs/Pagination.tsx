@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 
 type PaginationProps = {
     totalPosts: number;
@@ -7,36 +7,36 @@ type PaginationProps = {
     totalPages: number;
 };
 
+type PaginationItem = number | "...";
+
 const Pagination = ({ setCurrentPage, totalPages }: PaginationProps) => {
     const [currentPage, setCurrentPageState] = useState(1);
 
-    const handleClick = (page: number) => {
+    const handleClick: (page: number) => void  = (page: number): void => {
         setCurrentPage(page);
         setCurrentPageState(page);
     };
 
-    const handlePrevious = () => {
+    const handlePrevious: ()=>void = () => {
         if (currentPage > 1) {
             handleClick(currentPage - 1);
         }
     };
 
-    const handleNext = () => {
+    const handleNext: ()=>void = () => {
         if (currentPage < totalPages) {
             handleClick(currentPage + 1);
         }
     };
 
-    const getPageRange = () => {
-        const range: any[] = [];
+    const getPageRange: ()=>PaginationItem[] = (): PaginationItem[] => {
+        const range: PaginationItem[] = [];
         const maxVisiblePages = 5;
 
-        const start = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-        const end = Math.min(totalPages, start + maxVisiblePages - 1);
+        const start: number = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        const end: number = Math.min(totalPages, start + maxVisiblePages - 1);
 
-        for (let i = start; i <= end; i++) {
-            range.push(i);
-        }
+        for (let i: number = start; i <= end; i++) {range.push(i);}
 
         if (start > 1) range.unshift("...");
         if (end < totalPages) range.push("...");
@@ -44,7 +44,7 @@ const Pagination = ({ setCurrentPage, totalPages }: PaginationProps) => {
         return range;
     };
 
-    const pages = getPageRange();
+    const pages: PaginationItem[] = getPageRange();
 
     return (
         <div className="flex gap-2" role="navigation" aria-label="Pagination">
@@ -58,23 +58,18 @@ const Pagination = ({ setCurrentPage, totalPages }: PaginationProps) => {
                 &lt;
             </button>
 
-            {pages.map((page, index) => {
+            {pages.map((page: PaginationItem, index: number): React.ReactNode => {
                 if (page === "...") {
                     return (
-                        <span
-                            key={index}
-                            className="px-2 py-1"
-                            aria-hidden="true"
-                        >
-                        ...
-                    </span>
+                        <span key={index} className="px-2 py-1" aria-hidden="true">...</span>
                     );
                 } else {
                     return (
                         <button
                             key={index}
-                            onClick={() => handleClick(page as number)}
-                            className={`px-4 py-2 border rounded ${currentPage === page ? "bg-blue-600 text-white" : "border-gray-300"}`}
+                            onClick={(): void => handleClick(page as number)}
+                            className={`px-4 py-2 border rounded 
+                                        ${currentPage === page ? "bg-blue-600 text-white" : "border-gray-300"}`}
                             aria-current={currentPage === page ? "page" : undefined}
                             aria-label={`Page ${page}`}
                         >

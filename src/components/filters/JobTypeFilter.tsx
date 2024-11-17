@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CheckBox from "../styled_elements/CheckBox.tsx";
+import CheckBox from "../styledElements/CheckBox.tsx";
 
 interface JobTypeFilterProps {
     onJobTypeSelect: (jobTypes: string[]) => void;

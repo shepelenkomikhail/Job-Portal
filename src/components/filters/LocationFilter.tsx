@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Input from "../styled_elements/Input.tsx";
+import Input from "../styledElements/Input.tsx";
 
 const API_KEY = "43bddd270498446c9b44f1cc1acaeb05";
 
@@ -99,7 +99,7 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
                             width="40px"
                             fill="#6b7280"
                             role="img"
-                            aria-label="Search Icon"
+                            aria-label="SearchSvg Icon"
                         >
                             <path d="M480.06-486.67q30.27 0 51.77-21.56 21.5-21.55 21.5-51.83 0-30.27-21.56-51.77-21.55-21.5-51.83-21.5-30.27 0-51.77 21.56-21.5 21.55-21.5 51.83 0 30.27 21.56 51.77 21.55 21.5 51.83 21.5ZM480-168q129.33-118 191.33-214.17 62-96.16 62-169.83 0-114.86-73.36-188.1-73.36-73.23-179.97-73.23T300.03-740.1q-73.36 73.24-73.36 188.1 0 73.67 63 169.83Q352.67-286 480-168Zm0 88Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/>
                         </svg>

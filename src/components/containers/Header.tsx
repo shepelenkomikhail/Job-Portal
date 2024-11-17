@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import JobCard from "../jobs/JobCard";
+import JobCard from "../jobs/jobCards/JobCard.tsx";
 import { useMediaQuery } from "react-responsive";
 
 export default function Header() {

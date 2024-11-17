@@ -1,10 +1,10 @@
 import { useAtom } from "jotai/index";
-import { searchTermAtom, relevanceAtom, dateAtom, gridVal } from "./JobsSearch";
+import { searchTermAtom, relevanceAtom, dateAtom, gridVal } from "../../types/atoms.ts";
 import vacancies from "../../storage/vacancies.json";
-import { VacancyInterface } from "../../types/VacancyInterface";
-import JobCard from "./JobCard";
+import { Vacancy } from "../../types/Vacancy.ts";
+import JobCard from "./jobCards/JobCard.tsx";
 import Pagination from "./Pagination";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface JobsListProps {
     selectedIndustries: string[],
@@ -16,14 +16,9 @@ interface JobsListProps {
     searchTerm?: string,
 }
 
-export default function JobsList({
-                                     selectedIndustries,
-                                     selectedJobTypes,
-                                     selectedCompanies,
-                                     selectedLocations,
-                                     selectedRemote,
-                                     selectedBenefits,
-                                 }: JobsListProps) {
+export default function JobsList({selectedIndustries, selectedJobTypes, selectedCompanies, selectedLocations,
+                                     selectedRemote, selectedBenefits,}: JobsListProps) {
+
     const [grid] = useAtom(gridVal);
     const [searchTermA] = useAtom(searchTermAtom);
     const [selectedRelevanceOption] = useAtom(relevanceAtom);
@@ -32,31 +27,31 @@ export default function JobsList({
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage: 8 | 5 = grid ? 8 : 5;
 
-    const filteredVacancies = vacancies.filter((vacancy: VacancyInterface) => {
-        const lowerSearch = searchTermA.toLowerCase();
+    const filteredVacancies: Vacancy[] = vacancies.filter((vacancy: Vacancy): boolean => {
+        const lowerSearch: string = searchTermA.toLowerCase();
 
-        const matchesSearchTerm =
+        const matchesSearchTerm: boolean =
             vacancy.title.toLowerCase().includes(lowerSearch) ||
             vacancy.company.toLowerCase().includes(lowerSearch);
 
-        const matchesIndustry =
+        const matchesIndustry: boolean =
             selectedIndustries.length === 0 || selectedIndustries.includes(vacancy.industry);
 
-        const matchesJobType =
+        const matchesJobType: boolean =
             selectedJobTypes.length === 0 || selectedJobTypes.includes(vacancy.jobType);
 
-        const matchesCompany =
+        const matchesCompany: boolean =
             selectedCompanies.length === 0 || selectedCompanies.includes(vacancy.company);
 
-        const matchesLocation =
+        const matchesLocation: boolean =
             selectedLocations.length === 0 || selectedLocations.some(location =>
                 vacancy.location.toLowerCase().includes(location.toLowerCase())
             );
 
-        const matchesRemote =
+        const matchesRemote: boolean =
             selectedRemote.length === 0 || selectedRemote.includes(vacancy.remote);
 
-        const matchesBenefits =
+        const matchesBenefits: boolean =
             selectedBenefits.length === 0 || selectedBenefits.every(benefit => {
                 if (vacancy.benefits) {
                     return vacancy.benefits.includes(benefit);
@@ -64,10 +59,11 @@ export default function JobsList({
                 return false;
             });
 
-        return (matchesSearchTerm && matchesIndustry && matchesJobType && matchesCompany && matchesLocation && matchesRemote && matchesBenefits);
+        return (matchesSearchTerm && matchesIndustry && matchesJobType && matchesCompany &&
+            matchesLocation && matchesRemote && matchesBenefits);
     });
 
-    const sortedVacancies: VacancyInterface[] = filteredVacancies.sort((a: VacancyInterface, b: VacancyInterface) => {
+    const sortedVacancies: Vacancy[] = filteredVacancies.sort((a: Vacancy, b: Vacancy): number => {
         if (selectedRelevanceOption) {
             return b.relevancePoints - a.relevancePoints;
         } else if (selectedDateOption) {
@@ -76,25 +72,32 @@ export default function JobsList({
         return 0;
     });
 
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentVacancies = sortedVacancies.slice(indexOfFirstPost, indexOfLastPost);
+    const indexOfLastPost: number = currentPage * postsPerPage;
+    const indexOfFirstPost: number = indexOfLastPost - postsPerPage;
+    const currentVacancies: Vacancy[] = sortedVacancies.slice(indexOfFirstPost, indexOfLastPost);
 
-    const totalPages = Math.ceil(filteredVacancies.length / postsPerPage);
+    const totalPages: number = Math.ceil(filteredVacancies.length / postsPerPage);
 
-    useEffect(() => {
+    useEffect((): void => {
         if (currentPage > totalPages) {
             setCurrentPage(totalPages);
         }
     }, [totalPages, currentPage]);
 
     return (
-        <div className="flex flex-col items-center justify-center mt-8" role="region" aria-labelledby="jobs-list">
-            <div className={`gap-8 m-6 lg:mb-12 w-10/12 flex ${grid ? "flex-wrap flex-row items-center justify-center xl:gap-12 w-full" : "flex-col"}`} role="list">
-                {currentVacancies.map((vacancy, index) => (
+        <div className="flex flex-col items-center justify-center mt-8"
+             role="region"
+             aria-labelledby="jobs-list"
+        >
+            <div className={`gap-8 m-6 lg:mb-12 w-10/12 flex 
+                 ${grid ? "flex-wrap flex-row items-center justify-center xl:gap-12 w-full" : "flex-col"}`}
+                 role="list"
+            >
+                {currentVacancies.map((vacancy: Vacancy, index: number): React.ReactNode => (
                     <JobCard key={index} vacancy={vacancy} grid={grid} />
                 ))}
             </div>
+
             <Pagination
                 totalPosts={filteredVacancies.length}
                 postsPerPage={postsPerPage}

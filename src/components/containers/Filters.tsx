@@ -128,7 +128,7 @@ export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySe
                         <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters} />
                         <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters} />
                     </div>
-                    <button className="grayButton mt-2 w-full" onClick={toggleSidebar} aria-label="Search filters">Search</button>
+                    <button className="grayButton mt-2 w-full" onClick={toggleSidebar} aria-label="SearchSvg filters">SearchSvg</button>
                 </div>
             </div>
         </>

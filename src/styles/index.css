@@ -26,11 +26,14 @@ button, input {
   font-weight: 500;
 }
 
-.blueButton {
-  @apply bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded
+.applyButton {
+  @apply p-1.5 bg-red-100 border border-red-700 rounded-md hover:bg-red-700 hover:text-white
 }
 
-.grayButton {
+.blueBox {
+  @apply border border-blue-950 rounded-xl w-24
+}
 
-  @apply border border-gray-400 hover:bg-gray-100  text-black font-semibold py-2 px-4 rounded transition-colors duration-300
+.blueBoxText {
+  @apply font-medium text-blue-950 text-sm text-center
 }
