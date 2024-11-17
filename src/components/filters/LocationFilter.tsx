@@ -1,31 +1,45 @@
 import React, { useState, useEffect, useRef } from "react";
 import Input from "../styledElements/Input.tsx";
+import { REACT_APP_OPENCAGE_API_KEY } from "../../storage/API.ts";
+import LocationSearchSvg from "../svg/LocationSearchSvg.tsx";
 
-const API_KEY = "43bddd270498446c9b44f1cc1acaeb05";
+const API_KEY: string|undefined = REACT_APP_OPENCAGE_API_KEY;
 
 interface LocationFilterProps {
     onLocationSelect: (locations: string[]) => void;
     reset: boolean;
 }
 
+interface LocationResult {
+    formatted: string;
+    geometry: {
+        lat: number;
+        lng: number;
+    };
+}
+
+interface GeocodeApiResponse {
+    results: LocationResult[];
+}
+
 export default function LocationFilter({ onLocationSelect, reset }: LocationFilterProps) {
     const [searchTerm, setSearchTerm] = useState<string>("");
-    const [filteredLocations, setFilteredLocations] = useState<any[]>([]);
+    const [filteredLocations, setFilteredLocations] = useState<LocationResult[]>([]);
     const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
     const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
-    const dropdownRef = useRef<HTMLDivElement | null>(null); // Ref for dropdown container
+    const dropdownRef: React.MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
+    useEffect((): void => {
         if (searchTerm) {
             fetch(`https://api.opencagedata.com/geocode/v1/json?q=${searchTerm}&key=${API_KEY}`)
-                .then(response => response.json())
-                .then(data => {
+                .then((response) => response.json())
+                .then((data: GeocodeApiResponse) => {
                     if (data.results) {
                         setFilteredLocations(data.results);
                     }
                 })
-                .catch(error => {
+                .catch((error) => {
                     console.error("Error fetching location data:", error);
                 });
         } else {
@@ -33,14 +47,14 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
         }
     }, [searchTerm]);
 
-    useEffect(() => {
+    useEffect((): void => {
         if (reset) {
             setSelectedLocations([]);
         }
     }, [reset]);
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+    useEffect((): ()=>void => {
+        const handleClickOutside: (event: MouseEvent)=>void = (event: MouseEvent): void => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setIsDropdownVisible(false);
             }
@@ -48,15 +62,15 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
 
         document.addEventListener("mousedown", handleClickOutside);
 
-        return () => {
+        return (): void => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
 
-    const handleLocationSelect = (location: string) => {
+    const handleLocationSelect: (location: string)=>void = (location: string): void => {
         if (!selectedLocations.includes(location)) {
-            setSelectedLocations(prev => {
-                const updatedLocations = [...prev, location];
+            setSelectedLocations((prev: string[]): string[] => {
+                const updatedLocations: string[] = [...prev, location];
                 onLocationSelect(updatedLocations);
                 return updatedLocations;
             });
@@ -64,18 +78,20 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
         }
     };
 
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>)=>void =
+        (e: React.ChangeEvent<HTMLInputElement>): void => {
+
         setSearchTerm(e.target.value);
         setIsDropdownVisible(true);
     };
 
-    const handleLocationHover = (location: string) => {
+    const handleLocationHover: (location: string)=>void = (location: string): void => {
         setHoveredLocation(location);
     };
 
-    const handleRemoveLocation = (location: string) => {
-        setSelectedLocations(prev => {
-            const updatedLocations = prev.filter(l => l !== location);
+    const handleRemoveLocation: (location: string)=>void = (location: string): void => {
+        setSelectedLocations((prev: string[]): string[] => {
+            const updatedLocations: string[] = prev.filter((l: string): boolean => l !== location);
             onLocationSelect(updatedLocations);
             return updatedLocations;
         });
@@ -91,19 +107,7 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
                     value={searchTerm}
                     onChange={handleSearchChange}
                     aria-labelledby="location-search-input"
-                    svg={
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24"
-                            viewBox="0 -960 960 960"
-                            width="40px"
-                            fill="#6b7280"
-                            role="img"
-                            aria-label="SearchSvg Icon"
-                        >
-                            <path d="M480.06-486.67q30.27 0 51.77-21.56 21.5-21.55 21.5-51.83 0-30.27-21.56-51.77-21.55-21.5-51.83-21.5-30.27 0-51.77 21.56-21.5 21.55-21.5 51.83 0 30.27 21.56 51.77 21.55 21.5 51.83 21.5ZM480-168q129.33-118 191.33-214.17 62-96.16 62-169.83 0-114.86-73.36-188.1-73.36-73.23-179.97-73.23T300.03-740.1q-73.36 73.24-73.36 188.1 0 73.67 63 169.83Q352.67-286 480-168Zm0 88Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/>
-                        </svg>
-                    }
+                    svg={<LocationSearchSvg />}
                 />
                 {searchTerm && filteredLocations.length > 0 && isDropdownVisible && (
                     <div
@@ -114,16 +118,16 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
                         aria-labelledby="location-search-input"
                         aria-live="polite"
                     >
-                        {filteredLocations.map((location, index) => (
+                        {filteredLocations.map((location: LocationResult, index: number): React.ReactNode => (
                             <div
                                 key={index}
                                 role="option"
                                 aria-selected={selectedLocations.includes(location.formatted)}
                                 className={`p-2 cursor-pointer ${selectedLocations.includes(location.formatted) ? "font-bold text-blue-800" : ""} 
                                     ${location.formatted === hoveredLocation ? "bg-gray-100" : ""}`}
-                                onClick={() => handleLocationSelect(location.formatted)}
-                                onMouseEnter={() => handleLocationHover(location.formatted)}
-                                onMouseLeave={() => setHoveredLocation(null)}
+                                onClick={(): void => handleLocationSelect(location.formatted)}
+                                onMouseEnter={(): void => handleLocationHover(location.formatted)}
+                                onMouseLeave={(): void => setHoveredLocation(null)}
                             >
                                 {location.formatted}
                             </div>
@@ -131,7 +135,7 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
                     </div>
                 )}
                 <div className="flex flex-wrap flex-row space-x-1 w-full h-auto" role="list" aria-live="polite">
-                    {selectedLocations.map((location, index) => (
+                    {selectedLocations.map((location:string, index: number): React.ReactNode => (
                         <div
                             key={index}
                             className="font-bold text-gray-500 mb-2 flex items-center"
@@ -139,11 +143,11 @@ export default function LocationFilter({ onLocationSelect, reset }: LocationFilt
                         >
                             <button
                                 type="button"
-                                onClick={() => handleRemoveLocation(location)}
+                                onClick={(): void => handleRemoveLocation(location)}
                                 className="ml-2 text-gray-500 text-xl p-1"
                                 aria-label={`Remove ${location} from selection`}
                             >
-                                x
+                                ✖
                             </button>
                             {location}
                         </div>

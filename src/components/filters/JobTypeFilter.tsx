@@ -9,10 +9,10 @@ interface JobTypeFilterProps {
 export default function JobTypeFilter({ onJobTypeSelect, reset }: JobTypeFilterProps) {
     const [selectedJobTypes, setSelectedJobTypes] = useState<string[]>([]);
 
-    const handleJobTypeChange = (jobType: string) => {
-        setSelectedJobTypes(prev => {
-            const updatedJobTypes = prev.includes(jobType)
-                ? prev.filter(item => item !== jobType)
+    const handleJobTypeChange: (jobType: string)=>void = (jobType: string): void => {
+        setSelectedJobTypes((prev: string[]): string[] => {
+            const updatedJobTypes: string[] = prev.includes(jobType)
+                ? prev.filter((item: string): boolean => item !== jobType)
                 : [...prev, jobType];
 
             onJobTypeSelect(updatedJobTypes);
@@ -20,7 +20,7 @@ export default function JobTypeFilter({ onJobTypeSelect, reset }: JobTypeFilterP
         });
     };
 
-    useEffect(() => {
+    useEffect((): void => {
         if (reset) {
             setSelectedJobTypes([]);
         }
@@ -34,14 +34,14 @@ export default function JobTypeFilter({ onJobTypeSelect, reset }: JobTypeFilterP
                     <CheckBox
                         label="Full Time"
                         checked={selectedJobTypes.includes("Full Time")}
-                        onChange={() => handleJobTypeChange("Full Time")}
+                        onChange={(): void => handleJobTypeChange("Full Time")}
                     />
                 </div>
                 <div role="checkbox" aria-checked={selectedJobTypes.includes("Part Time")} aria-label="Part Time">
                     <CheckBox
                         label="Part Time"
                         checked={selectedJobTypes.includes("Part Time")}
-                        onChange={() => handleJobTypeChange("Part Time")}
+                        onChange={(): void => handleJobTypeChange("Part Time")}
                     />
                 </div>
             </div>

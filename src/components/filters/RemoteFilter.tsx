@@ -9,10 +9,10 @@ interface RemoteFilterProps {
 export default function RemoteFilter({ onRemoteSelect, reset }: RemoteFilterProps) {
     const [selectedRemoteOptions, setSelectedRemoteOptions] = useState<string[]>([]);
 
-    const handleRemoteOptionChange = (option: string) => {
-        setSelectedRemoteOptions(prev => {
-            const updatedRemoteOptions = prev.includes(option)
-                ? prev.filter(item => item !== option)
+    const handleRemoteOptionChange: (option: string)=>void = (option: string): void => {
+        setSelectedRemoteOptions((prev: string[]): string[] => {
+            const updatedRemoteOptions: string[] = prev.includes(option)
+                ? prev.filter((item: string): boolean => item !== option)
                 : [...prev, option];
 
             onRemoteSelect(updatedRemoteOptions);
@@ -20,7 +20,7 @@ export default function RemoteFilter({ onRemoteSelect, reset }: RemoteFilterProp
         });
     };
 
-    useEffect(() => {
+    useEffect((): void => {
         if (reset) {
             setSelectedRemoteOptions([]);
         }
@@ -34,21 +34,21 @@ export default function RemoteFilter({ onRemoteSelect, reset }: RemoteFilterProp
                     <CheckBox
                         label="On Site"
                         checked={selectedRemoteOptions.includes("On Site")}
-                        onChange={() => handleRemoteOptionChange("On Site")}
+                        onChange={(): void => handleRemoteOptionChange("On Site")}
                     />
                 </div>
                 <div role="checkbox" aria-checked={selectedRemoteOptions.includes("Hybrid")} aria-label="Hybrid">
                     <CheckBox
                         label="Hybrid"
                         checked={selectedRemoteOptions.includes("Hybrid")}
-                        onChange={() => handleRemoteOptionChange("Hybrid")}
+                        onChange={(): void => handleRemoteOptionChange("Hybrid")}
                     />
                 </div>
                 <div role="checkbox" aria-checked={selectedRemoteOptions.includes("Remote")} aria-label="Remote">
                     <CheckBox
                         label="Remote"
                         checked={selectedRemoteOptions.includes("Remote")}
-                        onChange={() => handleRemoteOptionChange("Remote")}
+                        onChange={(): void => handleRemoteOptionChange("Remote")}
                     />
                 </div>
             </div>

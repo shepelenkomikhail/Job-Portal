@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useState, useEffect, useRef, ChangeEvent} from "react";
 import Input from "../styledElements/Input.tsx";
 import CheckBox from "../styledElements/CheckBox.tsx";
 import industriesData from "../../storage/industries.json";
+import IndustrySvg from "../svg/IndustrySvg.tsx";
 
 interface IndustryFilterProps {
     onIndustrySelect: (industries: string[]) => void;
@@ -14,25 +15,24 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
     const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
     const [isDropdownVisible, setIsDropdownVisible] = useState(false);
     const [hoveredIndustry, setHoveredIndustry] = useState<string | null>(null);
+    const dropdownRef: React.MutableRefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
 
-    const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+    useEffect((): ()=>void => {
+        const handleClickOutside: (event: MouseEvent)=>void = (event: MouseEvent): void => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setIsDropdownVisible(false);
             }
         };
         document.addEventListener("click", handleClickOutside);
-        return () => {
+        return (): void => {
             document.removeEventListener("click", handleClickOutside);
         };
     }, []);
 
-    useEffect(() => {
+    useEffect((): void => {
         if (searchTerm) {
             setFilteredIndustries(
-                industriesData.filter((industry) =>
+                industriesData.filter((industry: string): boolean =>
                     industry.toLowerCase().includes(searchTerm.toLowerCase())
                 )
             );
@@ -41,40 +41,41 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
         }
     }, [searchTerm]);
 
-    useEffect(() => {
+    useEffect((): void => {
         if (reset) {
             setSelectedIndustries([]);
         }
     }, [reset]);
 
-    const handleIndustrySelect = (industry: string) => {
+    const handleIndustrySelect: (industry: string)=>void  = (industry: string): void => {
         if (!selectedIndustries.includes(industry)) {
-            const updatedIndustries = [...selectedIndustries, industry];
+            const updatedIndustries: string[] = [...selectedIndustries, industry];
             setSelectedIndustries(updatedIndustries);
             setIsDropdownVisible(false);
             onIndustrySelect(updatedIndustries);
         }
     };
 
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>)=>void =
+        (e: React.ChangeEvent<HTMLInputElement>): void => {
         setSearchTerm(e.target.value);
         setIsDropdownVisible(true);
     };
 
-    const handleIndustryHover = (industry: string) => {
+    const handleIndustryHover: (industry: string)=>void = (industry: string): void => {
         setHoveredIndustry(industry);
     };
 
-    const handleRemoveIndustry = (industry: string) => {
-        const updatedIndustries = selectedIndustries.filter((i) => i !== industry);
+    const handleRemoveIndustry: (industry: string)=>void = (industry: string): void => {
+        const updatedIndustries: string[] = selectedIndustries.filter((i: string): boolean => i !== industry);
         setSelectedIndustries(updatedIndustries);
         onIndustrySelect(updatedIndustries);
     };
 
-    const handleCheckboxIndustrySelect = (industry: string, isChecked: boolean) => {
-        const updatedIndustries = isChecked
+    const handleCheckboxIndustrySelect: (industry: string, isChecked: boolean)=>void = (industry: string, isChecked: boolean): void => {
+        const updatedIndustries: string[] = isChecked
             ? [...selectedIndustries, industry]
-            : selectedIndustries.filter((i) => i !== industry);
+            : selectedIndustries.filter((i: string): boolean => i !== industry);
 
         setSelectedIndustries(updatedIndustries);
         onIndustrySelect(updatedIndustries);
@@ -89,11 +90,7 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                     placeholder="Choose industry..."
                     value={searchTerm}
                     onChange={handleSearchChange}
-                    svg={
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="40px" fill="#6b7280" role="img" aria-label="SearchSvg Icon">
-                            <path d="M764-120 523.67-360.33l66-66L830-186l-66 66Zm-571.33 0-66-66L412-471.33l-94-94-24.67 24.66L247-587v84l-25.33 25.33L100-599.33l25.33-25.34H210l-48.67-48.66L296-808q18-18 39-25t45-7q24 0 45 8.67 21 8.66 39 26.66l-102 102L410.67-654l-25.34 25.33 92 92L588.67-648q-6.67-12.33-10.5-27.67-3.84-15.33-3.84-32 0-55 39.17-94.16Q652.67-841 707.67-841q15 0 26.5 3t20.83 8.33L665.33-740l74 74L829-755.67q5.67 10 8.83 22.17 3.17 12.17 3.17 27.17 0 55-39.17 94.16Q762.67-573 707.67-573q-16 0-28.67-2.33-12.67-2.34-23.67-7.34L192.67-120Z" />
-                        </svg>
-                    }
+                    svg={<IndustrySvg/>}
                     aria-label="Industry search input"
                 />
                 {searchTerm && filteredIndustries.length > 0 && isDropdownVisible && (
@@ -104,14 +101,14 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                         role="listbox"
                         aria-expanded={isDropdownVisible ? "true" : "false"}
                     >
-                        {filteredIndustries.map((industry, index) => (
+                        {filteredIndustries.map((industry: string, index: number): React.ReactNode => (
                             <div
                                 key={index}
                                 className={`p-2 cursor-pointer ${selectedIndustries.includes(industry) ? "font-bold text-blue-800" : ""} 
                                     ${industry === hoveredIndustry ? "bg-gray-100" : ""}`}
-                                onClick={() => handleIndustrySelect(industry)}
-                                onMouseEnter={() => handleIndustryHover(industry)}
-                                onMouseLeave={() => setHoveredIndustry(null)}
+                                onClick={(): void => handleIndustrySelect(industry)}
+                                onMouseEnter={(): void => handleIndustryHover(industry)}
+                                onMouseLeave={(): void => setHoveredIndustry(null)}
                                 role="option"
                                 aria-selected={selectedIndustries.includes(industry) ? "true" : "false"}
                                 aria-label={`Select ${industry}`}
@@ -124,15 +121,15 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
             </div>
 
             <div className={"flex flex-wrap flex-row space-x-1 w-full h-auto"} role="list">
-                {selectedIndustries.map((industry, index) => (
+                {selectedIndustries.map((industry: string, index: number): React.ReactNode => (
                     <div key={index} className="font-bold text-gray-500 mb-2" role="listitem">
                         <button
                             type="button"
-                            onClick={() => handleRemoveIndustry(industry)}
+                            onClick={(): void => handleRemoveIndustry(industry)}
                             className="ml-2 text-gray-500 text-xl p-1"
                             aria-label={`Remove ${industry} from selected industries`}
                         >
-                            x
+                            ✖
                         </button>
                         {industry}
                     </div>
@@ -145,7 +142,8 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                         <CheckBox
                             label={"IT"}
                             checked={selectedIndustries.includes("IT")}
-                            onChange={(e) => handleCheckboxIndustrySelect("IT", e.target.checked)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                                handleCheckboxIndustrySelect("IT", e.target.checked)}
                             aria-label="Select IT industry"
                         />
                     </label>
@@ -153,7 +151,8 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                         <CheckBox
                             label={"Medicine"}
                             checked={selectedIndustries.includes("Medicine")}
-                            onChange={(e) => handleCheckboxIndustrySelect("Medicine", e.target.checked)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                                handleCheckboxIndustrySelect("Medicine", e.target.checked)}
                             aria-label="Select Medicine industry"
                         />
                     </label>
@@ -161,7 +160,8 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                         <CheckBox
                             label={"Construction"}
                             checked={selectedIndustries.includes("Construction")}
-                            onChange={(e) => handleCheckboxIndustrySelect("Construction", e.target.checked)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                                handleCheckboxIndustrySelect("Construction", e.target.checked)}
                             aria-label="Select Construction industry"
                         />
                     </label>
@@ -171,7 +171,8 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                         <CheckBox
                             label={"Media"}
                             checked={selectedIndustries.includes("Media")}
-                            onChange={(e) => handleCheckboxIndustrySelect("Media", e.target.checked)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                                handleCheckboxIndustrySelect("Media", e.target.checked)}
                             aria-label="Select Media industry"
                         />
                     </label>
@@ -179,7 +180,8 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                         <CheckBox
                             label={"Management"}
                             checked={selectedIndustries.includes("Management")}
-                            onChange={(e) => handleCheckboxIndustrySelect("Management", e.target.checked)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                                handleCheckboxIndustrySelect("Management", e.target.checked)}
                             aria-label="Select Management industry"
                         />
                     </label>
@@ -187,7 +189,8 @@ export default function IndustryFilter({ onIndustrySelect, reset }: IndustryFilt
                         <CheckBox
                             label={"Law"}
                             checked={selectedIndustries.includes("Law")}
-                            onChange={(e) => handleCheckboxIndustrySelect("Law", e.target.checked)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>): void =>
+                                handleCheckboxIndustrySelect("Law", e.target.checked)}
                             aria-label="Select Law industry"
                         />
                     </label>

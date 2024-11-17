@@ -9,10 +9,10 @@ interface BenefitsFilterProps {
 export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilterProps) {
     const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
 
-    const handleBenefitChange = (benefit: string) => {
-        setSelectedBenefits(prev => {
-            const updatedBenefits = prev.includes(benefit)
-                ? prev.filter(item => item !== benefit)
+    const handleBenefitChange: (benefit: string)=>void = (benefit: string): void => {
+        setSelectedBenefits((prev: string[]): string[] => {
+            const updatedBenefits: string[] = prev.includes(benefit)
+                ? prev.filter((item: string): boolean => item !== benefit)
                 : [...prev, benefit];
 
             onBenefitsSelect(updatedBenefits);
@@ -20,7 +20,7 @@ export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilt
         });
     };
 
-    useEffect(() => {
+    useEffect((): void => {
         if (reset) {
             setSelectedBenefits([]);
         }
@@ -33,6 +33,7 @@ export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilt
             aria-labelledby="benefits-filter-title"
         >
             <h3 id="benefits-filter-title" className="mb-2">Benefits</h3>
+
             <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="flex flex-col">
                     <fieldset role="group" aria-labelledby="benefit-group-1">
@@ -41,7 +42,7 @@ export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilt
                             <CheckBox
                                 label="Maternity leave"
                                 checked={selectedBenefits.includes("Maternity leave")}
-                                onChange={() => handleBenefitChange("Maternity leave")}
+                                onChange={(): void => handleBenefitChange("Maternity leave")}
                                 aria-checked={selectedBenefits.includes("Maternity leave") ? "true" : "false"}
                             />
                         </label>
@@ -49,7 +50,7 @@ export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilt
                             <CheckBox
                                 label="Student loan"
                                 checked={selectedBenefits.includes("Student loan")}
-                                onChange={() => handleBenefitChange("Student loan")}
+                                onChange={(): void => handleBenefitChange("Student loan")}
                                 aria-checked={selectedBenefits.includes("Student loan") ? "true" : "false"}
                             />
                         </label>
@@ -57,7 +58,7 @@ export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilt
                             <CheckBox
                                 label="Pension plan"
                                 checked={selectedBenefits.includes("Pension plan")}
-                                onChange={() => handleBenefitChange("Pension plan")}
+                                onChange={(): void => handleBenefitChange("Pension plan")}
                                 aria-checked={selectedBenefits.includes("Pension plan") ? "true" : "false"}
                             />
                         </label>
@@ -70,7 +71,7 @@ export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilt
                             <CheckBox
                                 label="Medical insurance"
                                 checked={selectedBenefits.includes("Medical insurance")}
-                                onChange={() => handleBenefitChange("Medical insurance")}
+                                onChange={(): void => handleBenefitChange("Medical insurance")}
                                 aria-checked={selectedBenefits.includes("Medical insurance") ? "true" : "false"}
                             />
                         </label>
@@ -78,7 +79,7 @@ export default function BenefitsFilter({ onBenefitsSelect , reset}: BenefitsFilt
                             <CheckBox
                                 label="Dental insurance"
                                 checked={selectedBenefits.includes("Dental insurance")}
-                                onChange={() => handleBenefitChange("Dental insurance")}
+                                onChange={(): void => handleBenefitChange("Dental insurance")}
                                 aria-checked={selectedBenefits.includes("Dental insurance") ? "true" : "false"}
                             />
                         </label>
