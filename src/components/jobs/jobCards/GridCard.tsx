@@ -2,6 +2,7 @@ import {CardProps} from "../../../types/CardProps.ts";
 import AppliedBox from "../../styledElements/AppliedBox.tsx";
 import ApplyButton from "../../styledElements/ApplyButton.tsx";
 import LocationSvg from "../../svg/LocationSvg.tsx";
+import React from "react";
 
 export default function GridCard({ vacancy, applied, applyVacancy }: CardProps) {
     return (
@@ -30,7 +31,11 @@ export default function GridCard({ vacancy, applied, applyVacancy }: CardProps) 
                     {applied ? (
                         <AppliedBox layout={"grid"}/>
                     ) : (
-                        <ApplyButton vacancy={vacancy} layout={"list"} applyVacancy={applyVacancy}/>
+                        <div className={"flex items-center justify-center w-full"}
+                            onClick={(e: React.MouseEvent<HTMLDivElement>): void => {e.stopPropagation()}}
+                        >
+                            <ApplyButton vacancy={vacancy} layout={"grid"} applyVacancy={applyVacancy}/>
+                        </div>
                     )}
 
                 </div>

@@ -2,7 +2,7 @@ export default function AppliedBox({layout}: { layout: "grid" | "list" }) {
     return (
         <div
             className={`bottom-3 right-3 p-1.5 bg-blue-100 border border-blue-700 rounded-md 
-                        ${layout === "grid" ? "w-full" : "absolute w-34 lg:w-40"}`}
+                        ${layout === "grid" ? "w-full" : "absolute w-32 xl:w-40"}`}
             role="status"
             aria-live="polite"
         >

@@ -16,37 +16,37 @@ export default function JobCard({vacancy, grid, fromSidebar}: JobCardProps) {
     const [applied, setApplied] = useState(vacancy.applied);
     const [showDialog, setShowDialog] = useState(false);
 
-    useEffect(() => {
+    useEffect((): void => {
         const savedVacancies: string|null = localStorage.getItem("saved");
         const appliedVacancies: string|null = localStorage.getItem("applied");
 
         const savedList: Vacancy[] = savedVacancies ? JSON.parse(savedVacancies) : [];
         const appliedList: Vacancy[] = appliedVacancies ? JSON.parse(appliedVacancies) : [];
 
-        setSaved(savedList.some((v: Vacancy) => v.id === vacancy.id));
-        setApplied(appliedList.some((v: Vacancy) => v.id === vacancy.id));
+        setSaved(savedList.some((v: Vacancy): boolean => v.id === vacancy.id));
+        setApplied(appliedList.some((v: Vacancy): boolean => v.id === vacancy.id));
     }, [vacancy.id]);
 
-    const saveVacancy = (vacancy: Vacancy) => {
+    const saveVacancy: (vacancy: Vacancy)=>void = (vacancy: Vacancy): void => {
         const savedVacancies: string|null = localStorage.getItem("saved");
         let vacanciesList: Vacancy[] = savedVacancies ? JSON.parse(savedVacancies) : [];
 
         if (saved) {
-            vacanciesList = vacanciesList.filter((v) => v.id !== vacancy.id);
+            vacanciesList = vacanciesList.filter((v: Vacancy): boolean => v.id !== vacancy.id);
         } else {
             vacanciesList.push(vacancy);
         }
 
         localStorage.setItem("saved", JSON.stringify(vacanciesList));
-        setSaved((prevSaved) => !prevSaved);
+        setSaved((prevSaved: boolean): boolean => !prevSaved);
     }
 
-    const applyVacancy = (vacancy: Vacancy) => {
+    const applyVacancy:  (vacancy: Vacancy)=>void = (vacancy: Vacancy): void => {
         const appliedVacancies: string|null = localStorage.getItem("applied");
         let vacanciesList: Vacancy[] = appliedVacancies ? JSON.parse(appliedVacancies) : [];
 
         if (applied) {
-            vacanciesList = vacanciesList.filter((v) => v.id !== vacancy.id);
+            vacanciesList = vacanciesList.filter((v: Vacancy): boolean => v.id !== vacancy.id);
         } else {
             vacanciesList.push(vacancy);
         }
@@ -61,7 +61,7 @@ export default function JobCard({vacancy, grid, fromSidebar}: JobCardProps) {
             style={{width: grid ? "300px" : "100%"}}
             role="region"
             aria-labelledby="vacancy-card"
-            onClick={() =>{setShowDialog(true)}}
+            onClick={(): void =>{setShowDialog(true)}}
         >
 
             {/*Bookmark icon*/}
@@ -82,7 +82,8 @@ export default function JobCard({vacancy, grid, fromSidebar}: JobCardProps) {
             {/*Top Matching Badge*/}
             {vacancy.relevancePoints >= 80 && (
                 <div
-                    className="absolute top-0 left-0 bg-green-200 border border-green-800 rounded-md transition-ease-in duration-300 p-1 w-auto h-auto -translate-x-3 -translate-y-4"
+                    className="absolute top-0 left-0 bg-green-200 border border-green-800 rounded-md
+                    transition-ease-in duration-300 p-1 w-auto h-auto -translate-x-3 -translate-y-5"
                     role="status"
                     aria-live="polite"
                     aria-label="Top Matching"

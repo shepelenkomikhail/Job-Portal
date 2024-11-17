@@ -17,13 +17,13 @@ const Pagination = ({ setCurrentPage, totalPages }: PaginationProps) => {
         setCurrentPageState(page);
     };
 
-    const handlePrevious: ()=>void = () => {
+    const handlePrevious: ()=>void = (): void => {
         if (currentPage > 1) {
             handleClick(currentPage - 1);
         }
     };
 
-    const handleNext: ()=>void = () => {
+    const handleNext: ()=>void = (): void => {
         if (currentPage < totalPages) {
             handleClick(currentPage + 1);
         }
