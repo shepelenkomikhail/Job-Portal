@@ -1,10 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import LocationFilter from "../filters/LocationFilter.tsx";
 import JobTypeFilter from "../filters/JobTypeFilter.tsx";
 import CompanyFilter from "../filters/CompanyFilter.tsx";
 import RemoteFilter from "../filters/RemoteFilter.tsx";
 import IndustryFilter from "../filters/IndustryFilter.tsx";
 import BenefitsFilter from "../filters/BenefitsFilter.tsx";
+import SidebarSvg from "../svg/SidebarSvg.tsx";
+import CrossSvg from "../svg/CrosSvg.tsx";
 
 interface FiltersProps {
     onLocationSelect: (locations: string[]) => void;
@@ -16,15 +18,16 @@ interface FiltersProps {
     setSearchTerm: (term: string) => void;
 }
 
-export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySelect, onRemoteSelect, onIndustrySelect, onBenefitsSelect, setSearchTerm, }: FiltersProps) {
+export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySelect, onRemoteSelect,
+                                    onIndustrySelect, onBenefitsSelect, setSearchTerm }: FiltersProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [resetFilters, setResetFilters] = useState(false);
 
-    const toggleSidebar = () => {
+    const toggleSidebar: ()=>void = (): void => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    const handleClearFilters = () => {
+    const handleClearFilters: ()=>void = (): void => {
         onLocationSelect([]);
         onJobTypeSelect([]);
         onCompanySelect([]);
@@ -33,12 +36,13 @@ export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySe
         onBenefitsSelect([]);
         setSearchTerm("");
         setResetFilters(true);
-        setTimeout(() => setResetFilters(false), 0);
+        setTimeout((): void => setResetFilters(false), 0);
     };
 
     return (
         <>
-            <div className="flex hidden flex-col border-r border-gray-300 pr-4 lg:flex" role="complementary" aria-label="Filter sidebar">
+            <div className="hidden flex-col border-r border-gray-300 pr-4 lg:flex"
+                 role="complementary" aria-label="Filter sidebar">
                 <button
                     role="button"
                     aria-label="Clear all filters"
@@ -49,6 +53,7 @@ export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySe
                         Clear all filters
                     </p>
                 </button>
+
                 <div className="flex flex-col gap-8">
                     <LocationFilter onLocationSelect={onLocationSelect} reset={resetFilters} />
                     <JobTypeFilter onJobTypeSelect={onJobTypeSelect} reset={resetFilters} />
@@ -60,27 +65,12 @@ export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySe
             </div>
 
             <div className="lg:hidden" role="dialog" aria-modal="true">
-                <button
-                    role="button"
-                    aria-label="Open filters"
-                    onClick={toggleSidebar}
-                    className="rounded-md p-2 focus:outline-none"
+                <button className="rounded-md p-2 focus:outline-none"
+                        onClick={toggleSidebar}
+                        role="button"
+                        aria-label="Open filters"
                 >
-                    <svg
-                        className="absolute mt-1 ml-3 h-12 w-12 text-gray-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M4 6h16M4 12h16m-7 6h7"
-                        />
-                    </svg>
+                    <SidebarSvg/>
                 </button>
             </div>
 
@@ -91,33 +81,24 @@ export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySe
                 aria-label="Mobile filter sidebar"
             >
                 <div
-                    className={`relative h-full w-2/3 transform overflow-y-auto bg-white p-4 shadow-lg transition-transform duration-500 ease-in ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
-                    onClick={(e) => e.stopPropagation()}
+                    className={`relative h-full w-2/3 transform overflow-y-auto bg-white p-4 shadow-lg 
+                                transition-transform duration-500 ease-in 
+                                ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+                    onClick={(e: React.MouseEvent): void => e.stopPropagation()}
                     aria-labelledby="filter-sidebar-title"
                 >
-                    <button
-                        role="button"
-                        aria-label="Close filters"
-                        onClick={toggleSidebar}
-                        className="absolute right-4 top-4 text-gray-600"
+                    <button className="absolute right-4 top-4 text-gray-600"
+                            onClick={toggleSidebar}
+                            role="button"
+                            aria-label="Close filters"
                     >
-                        <svg
-                            className="h-6 w-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        </svg>
+                        <CrossSvg/>
                     </button>
-                    <button role="button" aria-label="Clear all filters" className="mb-2 ml-auto" onClick={handleClearFilters}>
+                    <button className="mb-2 ml-auto"
+                            onClick={handleClearFilters}
+                            role="button"
+                            aria-label="Clear all filters"
+                    >
                         <p className="font-semibold text-placeholder text-right">Clear all filters</p>
                     </button>
                     <div className="flex flex-col gap-8">
@@ -128,7 +109,13 @@ export default function Filters({ onLocationSelect, onJobTypeSelect, onCompanySe
                         <IndustryFilter onIndustrySelect={onIndustrySelect} reset={resetFilters} />
                         <BenefitsFilter onBenefitsSelect={onBenefitsSelect} reset={resetFilters} />
                     </div>
-                    <button className="grayButton mt-2 w-full" onClick={toggleSidebar} aria-label="SearchSvg filters">SearchSvg</button>
+                    <button className="border border-gray-400 hover:bg-gray-300  text-black font-semibold py-2
+                                        px-4 rounded mt-2 w-full"
+                            onClick={toggleSidebar}
+                            aria-label="SearchSvg filters"
+                    >
+                        Search
+                    </button>
                 </div>
             </div>
         </>

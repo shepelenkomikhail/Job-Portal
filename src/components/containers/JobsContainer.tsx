@@ -20,9 +20,7 @@ export default function JobsContainer({selectedLocations, selectedJobTypes, sele
             aria-labelledby="jobs-container-title"
         >
             <h2 id="jobs-container-title" className="sr-only">Jobs Container</h2>
-            <JobsSearch
-                aria-label="Job SearchSvg"
-            />
+            <JobsSearch aria-label="Job SearchSvg"/>
             <JobsList
                 aria-labelledby="jobs-list-title"
                 selectedLocations={selectedLocations}

@@ -1,7 +1,3 @@
-To make your README align more closely with the **requirements** and **features** typical in job portal dashboard projects (as outlined in the earlier case study), here’s how you can enhance it:
-
----
-
 # 🌟 **Job Portal One**
 
 ### 🛠️ Built with React, TypeScript, TailwindCSS, and Jotai
