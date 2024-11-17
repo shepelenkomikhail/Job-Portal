@@ -59,14 +59,16 @@ export default function JobsList({selectedIndustries, selectedJobTypes, selected
         });
     }, [searchTermA, selectedIndustries, selectedJobTypes, selectedCompanies, selectedLocations, selectedRemote, selectedBenefits]);
 
-    const sortedVacancies: Vacancy[] = filteredVacancies.sort((a: Vacancy, b: Vacancy): number => {
+    const sortedVacancies: Vacancy[] = useMemo((): Vacancy[] => {
         if (selectedRelevanceOption) {
-            return b.relevancePoints - a.relevancePoints;
-        } else if (selectedDateOption) {
-            return new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime();
+            return [...filteredVacancies].sort((a, b) => b.relevancePoints - a.relevancePoints);
         }
-        return 0;
-    });
+        if (selectedDateOption) {
+            return [...filteredVacancies].sort((a, b) => new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime());
+        }
+        return filteredVacancies;
+    }, [filteredVacancies, selectedRelevanceOption, selectedDateOption]);
+
 
     const indexOfLastPost: number = currentPage * postsPerPage;
     const indexOfFirstPost: number = indexOfLastPost - postsPerPage;
@@ -74,7 +76,7 @@ export default function JobsList({selectedIndustries, selectedJobTypes, selected
 
     useEffect(() => {
         setVacancies(sortedVacancies.slice(indexOfFirstPost, indexOfLastPost));
-    }, [sortedVacancies, indexOfFirstPost, indexOfLastPost]);
+    }, [sortedVacancies, indexOfFirstPost, indexOfLastPost, filteredVacancies]);
 
     useEffect((): void => {
         if (currentPage > totalPages) {
