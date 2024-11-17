@@ -31,7 +31,7 @@ export default function GridCard({ vacancy, applied, applyVacancy }: CardProps) 
                     {applied ? (
                         <AppliedBox layout={"grid"}/>
                     ) : (
-                        <div className={"flex items-center justify-center w-full"}
+                        <div className={"flex items-start justify-start md:items-center md:justify-center w-full"}
                             onClick={(e: React.MouseEvent<HTMLDivElement>): void => {e.stopPropagation()}}
                         >
                             <ApplyButton vacancy={vacancy} layout={"grid"} applyVacancy={applyVacancy}/>
