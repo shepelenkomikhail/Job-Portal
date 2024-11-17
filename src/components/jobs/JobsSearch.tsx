@@ -30,8 +30,8 @@ export default function JobsSearch() {
         localStorage.setItem("grid", JSON.stringify(grid));
     }, [grid]);
 
-    useEffect(():()=>void => {
-        const handler: number = setTimeout((): void => {
+    useEffect((): () => void => {
+        const handler: ReturnType<typeof setTimeout> = setTimeout((): void => {
             if (search.length >= 1 || search === "") {
                 setSearchTerm(search);
             }
