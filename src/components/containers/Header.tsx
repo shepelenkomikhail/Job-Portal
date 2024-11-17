@@ -21,8 +21,8 @@ export default function Header() {
         setIsAppliedSidebarOpen(!isAppliedSidebarOpen);
     };
 
-    const savedItems: Vacancy[] = JSON.parse(localStorage.getItem("saved") || "[]");
-    const appliedItems: Vacancy[] = JSON.parse(localStorage.getItem("applied") || "[]");
+    const savedItems: string|null = localStorage.getItem("saved");
+    const appliedItems: string|null = localStorage.getItem("applied");
 
     useEffect((): void => {
         const appliedData: Vacancy[] = JSON.parse(localStorage.getItem("applied") || "[]");

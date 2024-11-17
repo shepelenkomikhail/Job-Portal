@@ -32,7 +32,8 @@ export default function JobsSearch() {
 
     useEffect((): () => void => {
         const handler: ReturnType<typeof setTimeout> = setTimeout((): void => {
-            if (search.length >= 1 || search === "") {
+
+            if (search.length >= 0 || search === "") {
                 setSearchTerm(search);
             }
         }, 300);
@@ -67,12 +68,12 @@ export default function JobsSearch() {
             >
                 <Input
                     type="text"
-                    placeholder="SearchSvg for jobs"
+                    placeholder="Search for jobs"
                     width="80%"
                     value={search}
                     svg={<SearchSvg/>}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>): void => setSearch(e.target.value)}
-                    aria-placeholder="SearchSvg for jobs"
+                    aria-placeholder="Search for jobs"
                 />
                 <button
                     role="button"
